@@ -1,0 +1,16 @@
+SELECT - seleciona registro com base em filtros
+* ou <`OutroAtributo`> - indica o que vai ser selecionado
+
+WHERE - aplica filtros
+`<atributo>` = <valor> - condição
+
+LIKE - usado com o filtro WHERE para buscar por um  padrão especifico em uma coluna
+
+
+'a%'	Qualquer valor que começa com "a"
+'%a'	Qualquer valor que termina com "a"
+'%or%'	Qualquer valor que contêm "or" em qualquer posição 
+'_r%'	Encontra quaisquer valores que tenham "r" na segunda posição
+'a_%'	Encontra quaisquer valores que comecem com "a" e tenham pelo menos 2 caracteres de comprimento
+'a__%'	Encontra quaisquer valores que comecem com "a" e tenham pelo menos 3 caracteres de comprimento
+'a%o'	Encontra quaisquer valores que comecem com "a" e terminem com "o"
