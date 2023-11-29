@@ -1,5 +1,15 @@
 <?php
 
+// if (isset($_SESSION['result'])) {
+//     if ($_SESSION['result'] == "1") {
+//         unset($_SESSION[['result']]);
+//         echo ("<script>alert('Atualização feita com sucesso')</script>");
+//     } elseif ($_SESSION['result'] == '2') {
+//         unset($_SESSION[['result']]);
+//         echo ("<script>alert('Erro ao atualizar')</script>");
+//     }
+// }
+
 $id = $_POST['id'];
 
 include_once('conexao.php');
@@ -16,7 +26,7 @@ if ($linha) {
         <div class='mt-2'>
             <h2 style='text-align: center;' class='mt-0'>VER PRODUTO</h2>
         </div>
-        <form action='' method='POST'>
+        <form action='atualizar.php' method='POST'>
             <div class='mb-3'>
                 <label class='form-label'>Produto*</label>
                 <input value='$linha[produto]' type='text' class='form-control' id='produto' name='produto' onblur='V_produto(this)' required>
@@ -37,10 +47,11 @@ if ($linha) {
                 <label class='form-label'>Validade*</label>
                 <input value='$linha[validade]' type='date' class='form-control' id='validade' name='validade' onblur='V_validade(this)'
                     required>
-                <div id='alertaValidade' class='form-text'></div>
             </div>
+                <div id='alertaValidade' class='form-text'></div>
+            <input type='hidden' name= 'id' value='$linha[id]'>
             <div class='mb-3'>
-                <input type='submit' class='btn btn-primary' onblur='V_cadastrar(this)' value='Cadastrar'>
+                <input type='submit' class='btn btn-primary' onblur='V_cadastrar(this)' value='Atualizar'>
             </div>
         </form>
     </div>

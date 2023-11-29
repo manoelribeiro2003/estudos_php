@@ -17,3 +17,12 @@ LIKE - usado com o filtro WHERE para buscar por um  padrão especifico em uma co
 'a_%'	Encontra quaisquer valores que comecem com "a" e tenham pelo menos 2 caracteres de comprimento
 'a__%'	Encontra quaisquer valores que comecem com "a" e tenham pelo menos 3 caracteres de comprimento
 'a%o'	Encontra quaisquer valores que comecem com "a" e terminem com "o"
+
+
+SELECT <colunas> FROM <tabela> WHERE <colunas> LIKE <valor procurado;
+
+SELECT * FROM produtos WHERE produto LIKE "b%";
+
+UPDATE <tabela> SET <nome da coluna>  = 'valor atual' WHERE <nome da coluna> = <valor procurado>
+
+UPDATE produtos SET valor = '1.00' WHERE id = 1;
