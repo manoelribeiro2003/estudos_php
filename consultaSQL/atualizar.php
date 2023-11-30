@@ -20,11 +20,11 @@ if (mysqli_affected_rows($conn)) {
     //         quantidade: $quantidade <br>
     //         validade: $validade <br>";
     // $_SESSION['result'] = '1';
-    header('Location:./index.html');
+    header('Location:./gerenciarProdutos.php');
 }else {
     // echo("<div style='color:#cd8c00'>Nenhuma alteração realizada!</div>");
     // $_SESSION['result'] = '2';
-    header('Location:./index.html');
+    header('Location:./gerenciarProdutos.php');
 }
 
 

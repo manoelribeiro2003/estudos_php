@@ -5,4 +5,8 @@ function green($text){
 function red($text){
     return "<span style='color:red;'>$text</span>";
 }
+function black($text){
+    return "<span style='color:black;'>$text</span>";
+}
+
 ?>
