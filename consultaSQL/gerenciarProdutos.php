@@ -12,6 +12,7 @@ if ($result) {
     echo ("
     <div class='container card mt-2'>
         <h2>Lista de Produtos</h2>
+        <a href='index.html' class='btn btn-primary mb-2 mt-2'>Cadastrar</a>
         <table class='table table-striped table-sm' id='tabela`rincipal'>
             <tr>
                 <th>ID</th>
