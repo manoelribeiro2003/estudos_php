@@ -1,4 +1,33 @@
 <?php
+
+session_start();
+if (isset($_SESSION['atualizar'])) {
+    if ($_SESSION['atualizar']== '1') {
+        unset($_SESSION['atualizar']);
+        echo("<script>alert('Atualizado com sucesso!');</script>");
+    }elseif ($_SESSION['atualizar'] == '2') {
+        unset($_SESSION['atualizar']);
+        echo("<script>alert('Nada atualizado!');</script>");
+    }
+}else if (isset($_SESSION['excluir'])) {
+    if ($_SESSION['excluir']== '1') {
+        unset($_SESSION['excluir']);
+        echo("<script>alert('Excluido com sucesso!');</script>");
+    }else if ($_SESSION['excluir'] == '2') {
+        unset($_SESSION['excluir']);
+        echo("<script>alert('Nada excluido!');</script>");
+    }
+}else if (isset($_SESSION['cadastrar'])) {
+    if ($_SESSION['cadastrar']== '1') {
+        unset($_SESSION['cadastrar']);
+        echo("<script>alert('Cadastrado com sucesso!');</script>");
+    }else if ($_SESSION['cadastrar'] == '2') {
+        unset($_SESSION['cadastrar']);
+        echo("<script>alert('Nada cadastrado!');</script>");
+    }
+}
+
+
 include_once('conexao.php');
 include_once('head.php');
 
@@ -38,7 +67,7 @@ if ($result) {
                     <input type='hidden' name='id' value='$linha[id]'></input>
                 </form>
                 <form action='excluir.php' method='POST'>
-                    <td><input class='btn btn-danger' type='submit' name='comando' value='Deletar' onclick=\"return confirm('Deseja deletar o produto')\"></input></td>
+                    <td><input class='btn btn-danger' type='submit' name='comando' value='Deletar' onclick=\"return confirm('Deseja deletar o produto?')\"></input></td>
                     <input type='hidden' name='id' value='$linha[id]'></input>
                 </form>
             </tr>

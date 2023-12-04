@@ -12,18 +12,12 @@ $sql = "UPDATE produtos SET produto = '$produto', valor = '$valor', quantidade =
 
 mysqli_query($conn, $sql); //serve para executar o comando
 
+session_start();
 if (mysqli_affected_rows($conn)) {
-    // echo " <div style='color:green'>Produto atualizado!</div>
-    //         id: $id <br>
-    //         produto: $produto <br>
-    //         valor: $valor <br>
-    //         quantidade: $quantidade <br>
-    //         validade: $validade <br>";
-    // $_SESSION['result'] = '1';
+    $_SESSION['atualizar'] = '1';
     header('Location:./gerenciarProdutos.php');
 }else {
-    // echo("<div style='color:#cd8c00'>Nenhuma alteração realizada!</div>");
-    // $_SESSION['result'] = '2';
+    $_SESSION['atualizar'] = '2';
     header('Location:./gerenciarProdutos.php');
 }
 

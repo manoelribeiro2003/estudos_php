@@ -9,10 +9,11 @@ $sql = "DELETE FROM produtos WHERE id = $id";
 
 mysqli_query($conn, $sql);
 
+session_start();
 if (mysqli_affected_rows($conn)) {
-    echo("<script>alert('Excluido com sucesso!');</script>");
+    $_SESSION['excluir'] = '1';
     header('Location:./gerenciarProdutos.php');
 } else {
-    echo("<script>alert('Nada excluido!');</script>");
+    $_SESSION['excluir'] = '2';
     header('Location:./gerenciarProdutos.php');
 }
