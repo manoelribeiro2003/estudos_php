@@ -10,7 +10,9 @@ $sql = "DELETE FROM produtos WHERE id = $id";
 mysqli_query($conn, $sql);
 
 if (mysqli_affected_rows($conn)) {
-    echo (green("Produto ". black($id). " deletado com sucesso!"));
+    echo("<script>alert('Excluido com sucesso!');</script>");
+    header('Location:./gerenciarProdutos.php');
 } else {
-    echo (red("Nenhum produto foi deletado!"));
+    echo("<script>alert('Nada excluido!');</script>");
+    header('Location:./gerenciarProdutos.php');
 }
