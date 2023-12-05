@@ -26,3 +26,53 @@ SELECT * FROM produtos WHERE produto LIKE "b%";
 UPDATE <tabela> SET <nome da coluna>  = 'valor atual' WHERE <nome da coluna> = <valor procurado>
 
 UPDATE produtos SET valor = '1.00' WHERE id = 1;
+
+
+CREATE DATABASE empresa;  -> CRIAR UM BANCO DE DADOS
+
+use empresa;  -> ESPECIFICAR O BANCO DE DADOS UTILIZADO
+
+
+//CREATE <NOME DA TABELA>(
+<NOME DO CAMPO> <TIPO DE DADOS>(<TAMANHO DO TIPO DE DADO>),
+...);
+
+CREATE TABLE Pessoa(
+id_pessoa int NOT NULL AUTO_INCREMENT,
+nome varchar(255),
+sobrenome varchar(255),
+idade int,
+PRIMARY KEY (id_pessoa)
+);
+
+ALTER TABLE empresa.pessoa 
+ADD email varchar(100) not null, 
+ADD profissao varchar(100);
+
+//RENOMEAR TABELA
+ALTER TABLE pessoa CHANGE id_pessoa id int;
+
+//REMOVER UMA COLUNA
+ALTER TABLE empresa.pessoa
+DROP COLUMN email;
+
+
+//COMANDOS DROP (ㆆ_ㆆ)
+DROP TABLE empresa.pessoa;
+DROP DATABASE empresa; 
+
+Com o objetivo de fazer um sistema que armazene pacientes e atendimentos para uma melhor 
+gestão e armazenagem dos dados, crie um banco de dados com duas tabelas chamadas Pacientes e Atendimentos.
+
+
+A tabale Pacientes deverá conter os atributos id do paciente, nome, sexo, data de nascimento e urgencia.
+A tabela Atendimentos deverá conter os atributos id do atendimento, data do atendimento, tipo de urgencia do atendimento e a qual paciente está vinculado.
+
+Para a realização dos cadastros, use procedimentos que obriguem o preenchimento dos dados de modo que sejam todos obrigatorios (javascript).
+Use metodos de formularios usando o php.
+
+Ao criar as tabelas e fomularios, crie paginas de modo que listem os pacientes que estão cadastrados e opção de cadastrar pacientes.
+Também crie formularios para cadastrar atendimentos de modo que haja uma opção (como se fosse um dropdown) para listar os pacientes disponiveis para os atendimentos.
+Também crie uma pagina que liste os atendimentos por ordem de urgencia.
+
+Para a realização de tal procedimento está disponivel o xampp, vscode e phpmyadmin.
