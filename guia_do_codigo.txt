@@ -61,11 +61,40 @@ DROP COLUMN email;
 DROP TABLE empresa.pessoa;
 DROP DATABASE empresa; 
 
+//SELECT, ORDER BY
+SELECT * FROM produtos ORDER BY produto;
+SELECT * FROM produtos ORDER BY produto DESC | ASC;
+
+//CONTAR - FUNÇÃO COUNT()
+SELECT COUNT(*) FROM produtos;
+SELECT COUNT(*) FROM produtos WHERE validade < '2024-01-01';
+
+//SELECIONAR A MEDIA - FUNÇÃO AVG()
+SELECT AVG(valor) FROM produtos;
+
+//SOMAR -FUNÇÃO SUM()
+SELECT SUM(valor) FROM produtos;
+
+//MAXIMO E MINIMO
+SELECT MAX(validade) FROM produtos;
+SELECT MIN(validade) FROM produtos;
+
+//ALIAS
+SELECT MAX(validade) as maiorValid FROM produtos;
+
+//SELECIONAR A DIFERENÇA DE DATAS - E DANDO UM ALIAS PARA O RESULTADO - EXISTEM MUITOS OUTRO PARAMETROS DE TEMPO
+SELECT TIMESTAMPDIFF(DAY, NOW(), validade) AS prazo FROM produtos;
+SELECT TIMESTAMPDIFF(MONTH, NOW(), validade) AS prazo FROM produtos;
+SELECT TIMESTAMPDIFF(YEAR, NOW(), validade) AS prazo FROM produtos;
+
+//SELECIONA O LIMITE DE ONDE DEVE COMEÇAR E TERMINAR 
+SELECT * FROM `produtos` LIMIT 1, 5;
+
 Com o objetivo de fazer um sistema que armazene pacientes e atendimentos para uma melhor 
 gestão e armazenagem dos dados, crie um banco de dados com duas tabelas chamadas Pacientes e Atendimentos.
 
 
-A tabale Pacientes deverá conter os atributos id do paciente, nome, sexo, data de nascimento e urgencia.
+A tabale Pacientes deverá conter os atributos id do paciente, nome, sexo, data de nascimento e cpf.
 A tabela Atendimentos deverá conter os atributos id do atendimento, data do atendimento, tipo de urgencia do atendimento e a qual paciente está vinculado.
 
 Para a realização dos cadastros, use procedimentos que obriguem o preenchimento dos dados de modo que sejam todos obrigatorios (javascript).
