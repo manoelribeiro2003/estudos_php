@@ -14,6 +14,7 @@ $id = $_POST['id'];
 
 include_once('conexao.php');
 include_once('head.php');
+include_once('cores.php');
 
 $sql = "SELECT * FROM `produtos` WHERE `id` = $id";
 $resultado = mysqli_query($conn, $sql);
@@ -57,7 +58,7 @@ if ($linha) {
     </div>
     </body>";
 } else {
-    echo "<br><div style='color:red'>Produto não localizado!</div>";
+    echo(red("<br><div>Produto não localizado!</div>"));
 }
 ?>
 
