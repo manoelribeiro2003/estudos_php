@@ -1,0 +1,8 @@
+https://pt.stackoverflow.com/questions/8302/mysqli-vs-pdo-qual-o-mais-recomendado-para-usar
+
+https://www.jqwidgets.com/jquery-widgets-demo/demos/jqxsplitter/index.htm#demos/jqxsplitter/defaultfunctionality.htm
+
+https://www.youtube.com/watch?v=Vvl8FR3DiRw
+
+https://www.google.com/search?q=sistema+de+login+php&oq=sistema+de+login+php+&gs_lcrp=EgZjaHJvbWUyCggAEEUYFhgeGDkyBwgBEAAYgAQyBwgCEAAYgAQyBwgDEAAYgAQyCAgEEAAYFhgeMggIBRAAGBYYHjIICAYQABgWGB4yCAgHEAAYFhgeMggICBAAGBYYHjIICAkQABgWGB7SAQg3OTYzajBqN6gCALACAA&sourceid=chrome&ie=UTF-8&safe=active
+

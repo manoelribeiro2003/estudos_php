@@ -45,7 +45,15 @@ if ($linha3) {
             <div class='card-body'>
                 <h5 class='card-title text-center'>Menor Validade</h5>
                 <h2 class='card-subtitle mb-2 text-muted text-center'>$linha3[produto]</h1>
-                <h2 class='card-subtitle mb-2 text-muted text-center'>$linha3[prazo]</h1>
+                <h2 class='card-subtitle mb-2 text-muted text-center'>$linha3[prazo] dias</h1>
+                <input type='range' class='w-100' min='0' max='300' value='$linha3[prazo]' list='markers' disabled>
+                <datalist id='markers'>
+                    <option value='0' label='0'></option>
+                    <option value='75' label='75'></option>
+                    <option value='150' label='150'></option>
+                    <option value='225' label='225'></option>
+                    <option value='300' label='300'></option>
+                </datalist>
             </div>
         </div>
     </div>");

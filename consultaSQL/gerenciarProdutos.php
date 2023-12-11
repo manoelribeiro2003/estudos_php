@@ -31,7 +31,7 @@ if (isset($_SESSION['atualizar'])) {
 include_once('conexao.php');
 include_once('head.php');
 
-$sql = "SELECT * FROM produtos";
+$sql = "SELECT * FROM `produtos` ORDER BY `produto`";
 $result = mysqli_query($conn, $sql);
 
 // $linha2 = mysqli_fetch_array($result);

@@ -28,6 +28,16 @@ echo '<head>
 
 <script type="text/javascript" src="produtos.js"></script>
 
+<style>
+    datalist{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        writing-mode: vertical-lr;
+        width: 100%;
+    }
+</style>
+
 </head>';
 
 ?>
