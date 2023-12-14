@@ -6,3 +6,4 @@ https://www.youtube.com/watch?v=Vvl8FR3DiRw
 
 https://www.google.com/search?q=sistema+de+login+php&oq=sistema+de+login+php+&gs_lcrp=EgZjaHJvbWUyCggAEEUYFhgeGDkyBwgBEAAYgAQyBwgCEAAYgAQyBwgDEAAYgAQyCAgEEAAYFhgeMggIBRAAGBYYHjIICAYQABgWGB4yCAgHEAAYFhgeMggICBAAGBYYHjIICAkQABgWGB7SAQg3OTYzajBqN6gCALACAA&sourceid=chrome&ie=UTF-8&safe=active
 
+https://guilhermesteves.dev/tutoriais/regex-uteis-para-o-seu-dia-a-dia/

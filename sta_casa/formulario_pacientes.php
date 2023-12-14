@@ -39,9 +39,10 @@ include_once('./head.php');
         </div>
         <div class="mb-3">
             <label class="form-label">CPF</label>
-            <input type="text" class="form-control" id="cpf" name="cpf" onblur="V_cpf(this)" required>
+            <input type="text" class="form-control" id="cpf" name="cpf" onblur="V_cpf(this)" oninput="formatCpf(this)" required>
             <div id="alertaCpf" class="form-text"></div>
         </div>
         <input value="Cadastrar" type="submit" class="btn btn-warning" onclick="V_cadastrar(this)">
     </form>
+    <script type="text/javascript" src="./pacientes.js"></script>
 </div>
