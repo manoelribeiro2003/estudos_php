@@ -62,17 +62,17 @@ $result = $conn->query('SELECT * FROM arquivos') or die($conn->error);
         <h1>Lista de Arquivos</h1>
         <table border="1" cellpadding="10">
             <thead>
+                <th>Previw</th>
                 <th>Arquivo</th>
                 <th>Data de Upload</th>
             </thead>
             <tbody>
                 <?php
                 while ($arquivo = $result->fetch_assoc()) {
-                    # code...
-
                 ?>
                     <tr>
-                        <td><?= $arquivo['nome'] ?></td>
+                        <td><img height="50" src="<?=$arquivo['path']?>"></td>
+                        <td><a target="_blank" href="<?= $arquivo['path']?>"><?= $arquivo['nome'] ?></a></td>
                         <td><?= date("d/m/Y H:i", strtotime($arquivo['data_upload'])) ?></td>
                     </tr>
                 <?php } ?>
