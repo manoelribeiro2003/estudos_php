@@ -90,6 +90,23 @@ SELECT TIMESTAMPDIFF(YEAR, NOW(), validade) AS prazo FROM produtos;
 //SELECIONA O LIMITE DE ONDE DEVE COMEÇAR E TERMINAR 
 SELECT * FROM `produtos` LIMIT 1, 5;
 
+//ADICIONAR CHAVE ESTRANGEIRA
+ALTER TABLE `atendimentos` ADD FOREIGN KEY (`id_paciente`) REFERENCES `pacientes`(`id_paciente`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+//RESTRICT: Rejeita a atualização ou exclusão de um registro da tabela pai, se houver registros na tabela filha.
+
+//CASCADE: Atualiza ou exclui os registros da tabela filha automaticamente, ao atualizar ou excluir um registro da tabela pai.
+
+//SET NULL: Define como null o valor do campo na tabela filha, ao atualizar ou excluir o registro da tabela pai.
+
+//NO ACTION: Equivalente ao RESTRICT.
+
+//SET DEFAULT: Define o valor da coluna na tabela filha, como o valor definido como default para ela, ao excluir ou atualizar um registro na tabela pai.
+
+
+
+
+
 Com o objetivo de fazer um sistema que armazene pacientes e atendimentos para uma melhor 
 gestão e armazenagem dos dados, crie um banco de dados com duas tabelas chamadas Pacientes e Atendimentos.
 
