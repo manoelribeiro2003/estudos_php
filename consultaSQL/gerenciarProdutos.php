@@ -41,7 +41,8 @@ if ($result) {
     echo ("
     <div class='container card mt-2'>
         <h2>Lista de Produtos</h2>
-        <a href='index.html' class='btn btn-primary mb-2 mt-2'>Cadastrar</a>
+        <a href='./index.html' class='btn btn-primary mb-2 mt-2'>Cadastrar</a>
+        <a href='./gerenciarProdutos2.php' class='btn btn-danger mb-2 mt-2'>Gerenciar Produtos 2</a>
         <table class='table table-striped table-sm' id='tabela`rincipal'>
             <tr>
                 <th>ID</th>
@@ -57,7 +58,7 @@ if ($result) {
     while ($linha = mysqli_fetch_array(($result))) {
         echo ("
             <tr id='trCadastro'>
-                <form action='pesquisa.php' method='POST'>
+                <form action='./pesquisa.php' method='POST'>
                     <td data-label='ID'>$linha[id]</td>
                     <td data-label='Produto'>$linha[produto]</td>
                     <td data-label='Valor'>$linha[valor]</td>

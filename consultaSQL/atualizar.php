@@ -2,13 +2,20 @@
 
 include_once("conexao.php");
 
-$id = $_POST['id'];
-$produto = $_POST['produto'];
-$valor = $_POST['valor'];
-$quantidade = $_POST['quantidade'];
-$validade = $_POST['validade'];
+$sql = "";
 
-$sql = "UPDATE produtos SET produto = '$produto', valor = '$valor', quantidade = '$quantidade', validade = '$validade' WHERE id = $id";
+if (isset($_POST['vender']) && $_POST['vender'] == 'vender') {
+    $id = $_POST['id'];
+    $quantidade = $_POST['quantidade'];
+    $sql = "UPDATE produtos SET quantidade = '$quantidade' WHERE id = $id";
+}elseif (isset($_POST['editar']) && $_POST['editar'] == 'editar') {
+    $id = $_POST['id'];
+    $produto = $_POST['produto'];
+    $valor = $_POST['valor'];
+    $quantidade = $_POST['quantidade'];
+    $validade = $_POST['validade'];
+    $sql = "UPDATE produtos SET produto = '$produto', valor = '$valor', quantidade = '$quantidade', validade = '$validade' WHERE id = $id";
+}
 
 mysqli_query($conn, $sql); //serve para executar o comando
 
