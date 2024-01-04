@@ -141,7 +141,7 @@ if ($result) {
                     <div class="modal-body">
                         <div class="modal-body">
                             <div class="form-floating mb-3">
-                                <input type="text" id="verId" name="id" class="form-control" disabled>
+                                <input type="text" id="verId" name="id" class="form-control">
                                 <label>Id</label>
                             </div>
                             <div class="form-floating mb-3">
@@ -149,15 +149,18 @@ if ($result) {
                                 <label>Produto</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="text" id="editarVenda" name="quantidade" class="form-control">
+                                <input type="text" id="verQuantidade" name="quantidade" class="form-control">
                                 <label>Quantidade</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type='hidden' name='vender' value='vender'></input>
-                                <input type='hidden' name='id' value='vender'></input>
+                                <input type="text" id="editarVenda" name="venda" class="form-control">
+                                <label>Venda</label>
                             </div>
+                            <div class="form-floating mb-3">
+                            <input type='hidden' name='vender' value='vender'></input>
+                        </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" onclick="fecharModalEditar()">Fechar</button>
+                                <button type="button" class="btn btn-secondary" onclick="fecharModalVender()">Fechar</button>
                                 <input type="submit" class="btn btn-primary" value="Vender">
                             </div>
                         </div>
@@ -195,19 +198,21 @@ if ($result) {
 <script>
     function abrirModalVender(id) {
         $("#modalVender").modal("show");
-        
+
         produto = document.getElementById("produtos" + id);
         quantidade = document.getElementById("quantidade" + id);
 
         verId = document.getElementById("verId");
         verProduto = document.getElementById("verProduto");
-        editarVenda = document.getElementById("editarVenda");
-
+        verQuantidade = document.getElementById("verQuantidade");
+        
         verId.value = id;
         verProduto.value = produto.value;
+        verQuantidade.value = quantidade.value;
+        
     }
 
-    function fecharModalEditar() {
+    function fecharModalVender() {
         $("#modalVender").modal("hide");
     }
 </script>
