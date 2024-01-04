@@ -149,11 +149,11 @@ if ($result) {
                                 <label>Produto</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="text" id="verQuantidade" name="quantidade" class="form-control">
+                                <input type="number" id="verQuantidade" name="quantidade" class="form-control">
                                 <label>Quantidade</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="text" id="editarVenda" name="venda" class="form-control">
+                                <input type="number" id="editarVenda" name="venda" class="form-control">
                                 <label>Venda</label>
                             </div>
                             <div class="form-floating mb-3">
@@ -205,10 +205,14 @@ if ($result) {
         verId = document.getElementById("verId");
         verProduto = document.getElementById("verProduto");
         verQuantidade = document.getElementById("verQuantidade");
+        venda = document.getElementById("editarVenda");
         
         verId.value = id;
         verProduto.value = produto.value;
         verQuantidade.value = quantidade.value;
+
+        venda.max = quantidade.value;
+        venda.min = 1;
         
     }
 
