@@ -65,17 +65,17 @@ if ($result) {
                     <td data-label='Valor'>$linha[valor]</td>
                     <td data-label='Quantidde'>$linha[quantidade]</td>
                     <td data-label='Validade'>$linha[validade]</td>
-                    <td><button class='btn btn-warning' onclick='abrirModalEditar($linha[id])'><i class='fa fa-edit'></button></td>
+                    <td><button class='btn btn-warning' onclick='abrirModalEditar($linha[id])'>Editar</button></td>
                     <input type='hidden' id='produtos$linha[id]' value='$linha[produto]'></input>
                     <input type='hidden' id='valor$linha[id]' value='$linha[valor]'></input>
                     <input type='hidden' id='quantidade$linha[id]' value='$linha[quantidade]'></input>
                     <input type='hidden' id='validade$linha[id]' value='$linha[validade]'></input>
                 
                 <form action='./excluir.php' method='POST'>
-                    <td><button class=' btn btn-danger' type='submit' name='comando'onclick=\"return confirm('Deseja deletar o produto?')\"><i class='fa fa-trash'></i></button></td>
+                    <td><input class='btn btn-danger' type='submit' name='comando' value='Deletar' onclick=\"return confirm('Deseja deletar o produto?')\"></input></td>
                     <input type='hidden' name='id' value='$linha[id]'></input>
                 </form>
-                <td><button class='btn btn-success' onclick='abrirModalVender($linha[id])'><i class='fa fa-shopping-cart'></i></button></td>
+                <td><button class='btn btn-success' onclick='abrirModalVender($linha[id])'>Vender</button></td>
             </tr>
         ");
     }
@@ -133,7 +133,7 @@ if ($result) {
 <div class="modal fade" id='modalVender' tabindex="-1" role="dialog" aria-label="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-            <form action="./atualizar.php" method="post">
+            <form action="./vendas.php" method="post">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle">Vender Produto</h5>
                 </div>
@@ -157,9 +157,9 @@ if ($result) {
                                 <label>Venda</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type='hidden' name='vender' value='vender'></input>
-                                <input type="hidden" id="vendasHiddenQuantidade" name="quantidade" class="form-control">
-                            </div>
+                            <input type='hidden' name='vender' value='vender'></input>
+                            <input type="hidden" id="vendasHiddenQuantidade" name="quantidade" class="form-control">
+                        </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" onclick="fecharModalVender()">Fechar</button>
                                 <input type="submit" class="btn btn-primary" value="Vender">
@@ -198,7 +198,6 @@ if ($result) {
 </script>
 <script>
     function abrirModalVender(id) {
-        limparCampoVendas();
         $("#modalVender").modal("show");
 
         produto = document.getElementById("produtos" + id);
@@ -209,7 +208,7 @@ if ($result) {
         verQuantidade = document.getElementById("vendasVerQuantidade");
         hiddenQuantidade = document.getElementById("vendasHiddenQuantidade");
         venda = document.getElementById("vendasEditarVenda");
-
+        
         verId.value = id;
         verProduto.value = produto.value;
         verQuantidade.value = quantidade.value;
@@ -217,21 +216,16 @@ if ($result) {
 
         venda.max = quantidade.value;
         venda.min = 1;
-
-    }
-
-    function limparCampoVendas() {
-        document.getElementById("vendasEditarVenda").value = "";
+        
     }
 
     function fecharModalVender() {
         $("#modalVender").modal("hide");
-        limparCampoVendas();
     }
 </script>
 
 <script>
-    function habilitarCampoQuantidade() {
-        document.getElementById("verQuantidade").disabled = false;
-    }
+  function habilitarCampoQuantidade() {
+    document.getElementById("verQuantidade").disabled = false;
+  }
 </script>

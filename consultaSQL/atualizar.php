@@ -26,7 +26,6 @@ if (mysqli_affected_rows($conn)) {
     $_SESSION['atualizar'] = '1';
     header('Location:./gerenciarProdutos2.php');
 }else {
-    echo ("<script>alert(".var_dump($_POST['id'], $_POST['venda'], $_POST['quantidade']).");</script>");
     $_SESSION['atualizar'] = '2';
     header('Location:./gerenciarProdutos2.php');
 }
