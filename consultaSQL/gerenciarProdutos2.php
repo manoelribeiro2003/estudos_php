@@ -149,7 +149,7 @@ if ($result) {
                                 <label>Produto</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="number" id="verQuantidade" name="quantidade" class="form-control">
+                                <input type="number" id="verQuantidade" class="form-control" disabled>
                                 <label>Quantidade</label>
                             </div>
                             <div class="form-floating mb-3">
@@ -158,6 +158,7 @@ if ($result) {
                             </div>
                             <div class="form-floating mb-3">
                             <input type='hidden' name='vender' value='vender'></input>
+                            <input type="hidden" id="hiddenQuantidade" name="quantidade" class="form-control">
                         </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" onclick="fecharModalVender()">Fechar</button>
@@ -205,11 +206,13 @@ if ($result) {
         verId = document.getElementById("verId");
         verProduto = document.getElementById("verProduto");
         verQuantidade = document.getElementById("verQuantidade");
+        hiddenQuantidade = document.getElementById("hiddenQuantidade");
         venda = document.getElementById("editarVenda");
         
         verId.value = id;
         verProduto.value = produto.value;
         verQuantidade.value = quantidade.value;
+        hiddenQuantidade.value = quantidade.value;
 
         venda.max = quantidade.value;
         venda.min = 1;
