@@ -223,3 +223,9 @@ if ($result) {
         $("#modalVender").modal("hide");
     }
 </script>
+
+<script>
+  function habilitarCampoQuantidade() {
+    document.getElementById("verQuantidade").disabled = false;
+  }
+</script>
