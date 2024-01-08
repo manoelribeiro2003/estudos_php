@@ -1,4 +1,7 @@
+<i class="fa fa-registered">teste</i>
+
 <?php
+
 
 
 session_start();
@@ -65,7 +68,7 @@ if ($result) {
                     <td data-label='Valor'>$linha[valor]</td>
                     <td data-label='Quantidde'>$linha[quantidade]</td>
                     <td data-label='Validade'>$linha[validade]</td>
-                    <td><button class='btn btn-warning' onclick='abrirModalEditar($linha[id])'><i class='fa fa-edit'></button></td>
+                    <td><button class='btn btn-warning' onclick='abrirModalEditar($linha[id])'><i class='fa fa-edit'></i></button></td>
                     <input type='hidden' id='produtos$linha[id]' value='$linha[produto]'></input>
                     <input type='hidden' id='valor$linha[id]' value='$linha[valor]'></input>
                     <input type='hidden' id='quantidade$linha[id]' value='$linha[quantidade]'></input>
@@ -87,6 +90,10 @@ if ($result) {
     echo ('0 results');
 }
 ?>
+<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+<script src="https://cdn.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" 
+integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <div class="modal fade" id='modalEditar' tabindex="-1" role="dialog" aria-label="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -170,6 +177,35 @@ if ($result) {
         </div>
     </div>
 </div>
+<div class="modal fade" id='modalFiltro' tabindex="-1" role="dialog" aria-label="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <form action="./atualizar.php" method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Filtrar Produto</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-body">
+                        <div class="modal-body">
+                            <h5>Filtrar por ...</h5>
+                            <div class="form-floating mb-3">
+                                <input type="text" id="filtroId" name="id" class="form-control">
+                                <label>Id</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" id="filtroProduto" name="produto" class="form-control" disabled>
+                                <label>Produto</label>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" onclick="fecharModalFiltros()">Fechar</button>
+                                <input type="submit" class="btn btn-primary" value="Vender">
+                            </div>
+                        </div>
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>
 <script>
     function abrirModalEditar(id) {
         $("#modalEditar").modal("show");
@@ -195,8 +231,7 @@ if ($result) {
     function fecharModalEditar() {
         $("#modalEditar").modal("hide");
     }
-</script>
-<script>
+
     function abrirModalVender(id) {
         limparCampoVendas();
         $("#modalVender").modal("show");
@@ -231,7 +266,58 @@ if ($result) {
 </script>
 
 <script>
-    function habilitarCampoQuantidade() {
-        document.getElementById("verQuantidade").disabled = false;
+    function abrirModalFiltros() {
+        limparCampos();
+        $("modalFiltro").modal("show");
+    }
+
+    function fecharModalFiltros() {
+        $("modalFiltro").modal("hide");
+    }
+
+    function limparCampos() {
+        document.getElementById("filtroId").value = "";
+        document.getElementById("filtroProduto").value = "";
+
+    }
+
+    function aplicarFiltros() {
+        let idProduto = document.getElementById("filtroId").value;
+        let produto = document.getElementById("filtroProduto").value;
+
+        let tabela = document.getElementById("tabelaPrincipal").value;
+
+        let json = {};
+
+        if (idProduto != "") {
+            json.idProduto = idProduto;
+        }
+        if (produto != "") {
+            json.produto = produto;
+        }
+
+        alert(json.idProduto);
+        alert(json.pProduto);
+
+        if (idProduto != "" || produto != "") {
+            $.ajax({
+                url: "./querys.php",
+                method: "POST",
+                data: {
+                    filtroTabela: "sim",
+                    tabela: "produtos_full",
+                    filtroData: JSON.stringify(json)
+                },
+                success: (data) => {
+                    tabela.innerHTML = data;
+
+                    btnRemoverFiltros[0].classList.remove("d-none");
+
+                    $("modalFiltro").modal("hide");
+
+                }
+            })
+        }
+
     }
 </script>
