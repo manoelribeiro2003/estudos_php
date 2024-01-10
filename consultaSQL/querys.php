@@ -5,12 +5,9 @@ session_start();
 include_once("./conexao.php");
 //terceiro passo e fim do filtro
 //passo 2 da remoção
-function gerarTabelaHTML($mysql_query){
+function gerarTabelaHTML($mysql_query)
+{
     echo ("
-    <div class='container card mt-2'>
-        <h2>Lista de Produtos</h2>
-        <a href='./index.html' class='btn btn-primary mb-2 mt-2'>Cadastrar</a>
-        <table class='table table-striped table-sm' id='tabelaPrincipal'>
             <tr>
                 <th>ID</th>
                 <th>Produtos</th>
@@ -32,7 +29,7 @@ function gerarTabelaHTML($mysql_query){
                     <td data-label='Valor'>$linha[valor]</td>
                     <td data-label='Quantidde'>$linha[quantidade]</td>
                     <td data-label='Validade'>$linha[validade]</td>
-                    <td><button class='btn btn-warning' onclick='abrirModalEditar($linha[id])'><i class='fa fa-edit'></button></td>
+                    <td><button class='btn btn-warning' onclick='abrirModalEditar($linha[id])'><i class='fa fa-edit'></i></button></td>
                     <input type='hidden' id='produtos$linha[id]' value='$linha[produto]'></input>
                     <input type='hidden' id='valor$linha[id]' value='$linha[valor]'></input>
                     <input type='hidden' id='quantidade$linha[id]' value='$linha[quantidade]'></input>
@@ -50,7 +47,7 @@ function gerarTabelaHTML($mysql_query){
 
 
 //segundo paso
-function retornarTabelaComFiltros($conexao, $tabela, $filtros){
+function retornarTabelaComFiltros($conexao, $tabela, $filtros) {
 
     $filtros = json_decode($filtros, true);
     //monta a string SQL
@@ -69,7 +66,7 @@ function retornarTabelaComFiltros($conexao, $tabela, $filtros){
         $sql = trim(substr($sql, 0, strlen($sql) - 3));
     }
     //finaliza a substring
-    $sql .=  'LIMIT 0, 10';
+    $sql .=  ' LIMIT 0, 10';
 
     gerarTabelaHTML(mysqli_query($conexao, $sql));
 
@@ -82,6 +79,13 @@ if (isset($_POST['filtroTabela']) && isset($_POST['tabela']) && isset($_POST['fi
 }
 
 //passo 1 da remoção
-
-//
-?>
+if (isset($_POST['tabelaNormal']) && isset($_POST['tabela'])) {
+    $tabela = $_POST['tabela'];
+    $sql = "SELECT * FROM produtos LIMIT 0, 10";
+    $result = mysqli_query($conn, $sql);
+    gerarTabelaHTML($result);
+}
+//passo da remoção
+if (isset($_POST['removerFiltro'])) {
+    unset($_SESSION['filtro']);
+}

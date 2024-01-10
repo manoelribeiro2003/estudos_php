@@ -103,7 +103,9 @@ ALTER TABLE `atendimentos` ADD FOREIGN KEY (`id_paciente`) REFERENCES `pacientes
 
 //SET DEFAULT: Define o valor da coluna na tabela filha, como o valor definido como default para ela, ao excluir ou atualizar um registro na tabela pai.
 
+// strlen()
 
+//trim()
 
 
 

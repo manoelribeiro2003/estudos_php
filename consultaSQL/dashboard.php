@@ -1,13 +1,32 @@
-<?php
-include_once('conexao.php');
-include_once('head.php');
+<!DOCTYPE html>
+<html lang="pt-br">
 
-$sql = "SELECT COUNT(*) AS cont FROM produtos";
-$result = $conn->query($sql);
-$linha = mysqli_fetch_array($result);
+<head>
+    <?php include_once('head.php'); ?>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        datalist {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            writing-mode: vertical-lr;
+            width: 100%;
+        }
+    </style>
+</head>
 
-if ($linha) {
-    echo("
+<body>
+    <?php
+    include_once('conexao.php');
+
+    $sql = "SELECT COUNT(*) AS cont FROM produtos";
+    $result = $conn->query($sql);
+    $linha = mysqli_fetch_array($result);
+
+    if ($linha) {
+        echo ("
     <div class='container mt-2'>
         <div class='card' style='width: 18rem;'>
              <div class='card-body'>
@@ -16,14 +35,14 @@ if ($linha) {
             </div>
         </div>
     </div>");
-}
+    }
 
-$sql2 = "SELECT SUM(quantidade) AS soma FROM produtos";
-$result2 = $conn->query($sql2);
-$linha2 = mysqli_fetch_array($result2);
+    $sql2 = "SELECT SUM(quantidade) AS soma FROM produtos";
+    $result2 = $conn->query($sql2);
+    $linha2 = mysqli_fetch_array($result2);
 
-if ($linha2) {
-    echo("
+    if ($linha2) {
+        echo ("
     <div class='container mt-2'>
         <div class='card' style='width: 18rem;'>
             <div class='card-body'>
@@ -32,14 +51,14 @@ if ($linha2) {
             </div>
         </div>
     </div>");
-}
+    }
 
-$sql3 = "SELECT produto, TIMESTAMPDIFF(DAY, NOW(), validade) AS prazo FROM produtos ORDER BY prazo LIMIT 0, 1;";
-$result3 = $conn->query($sql3);
-$linha3 = mysqli_fetch_array($result3);
+    $sql3 = "SELECT produto, TIMESTAMPDIFF(DAY, NOW(), validade) AS prazo FROM produtos ORDER BY prazo LIMIT 0, 1;";
+    $result3 = $conn->query($sql3);
+    $linha3 = mysqli_fetch_array($result3);
 
-if ($linha3) {
-    echo("
+    if ($linha3) {
+        echo ("
     <div class='container mt-2'>
         <div class='card' style='width: 18rem;'>
             <div class='card-body'>
@@ -57,6 +76,8 @@ if ($linha3) {
             </div>
         </div>
     </div>");
-}
+    }
+    ?>
+</body>
 
-?>
+</html>
