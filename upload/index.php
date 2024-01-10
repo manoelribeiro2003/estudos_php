@@ -2,30 +2,49 @@
 
 include('./conexao.php');
 
+$DoisMegaBytes = 2097152;
+
 if (isset($_FILES['arquivo'])) {
+
+    ########################## Variavel arquivo vira um objeto do tipo file ###############################
     $arquivo = $_FILES['arquivo'];
 
+    ########################## caso dê algum tipo de erro o programa morre ##########################
     if ($arquivo['error']) {
         die('Falha ao enviar arquivo');
     }
 
-    if ($arquivo['size'] > 2097152) {
+    ########################## caso o arquivo seja maior que 2MB ##########################
+    if ($arquivo['size'] > $DoisMegaBytes) {
         die('Arquivo muito grande! Max: 2MB.');
     }
 
-    $pasta = 'arquivos/';
+
+    ########################## Definindo alguns atributos do arquivo a ser feito upload ##########################
+    #----------a pasta onde ele vai ficar------------
+    $pasta = 'arquivos/'; 
+    #--------o nome do arquivo que foi feito upload-----------
     $nomeDoArquivo =  $arquivo['name'];
-    $novoNomeDoArquivo = uniqid();
-    $extensao = strtolower(pathinfo($nomeDoArquivo, PATHINFO_EXTENSION));
+    #----------o novo nome do arquivo com a função para deixar seu nome unico---------
+    $novoNomeDoArquivo = uniqid(); 
+    #----- guarda a extensão do arquivo
+    $extensao = strtolower( #---transforma a extensão em minusculo
+        pathinfo($nomeDoArquivo, PATHINFO_EXTENSION));#--- função que retorna a informação da extensão do nome do arquivo
 
-
+    ########################## se a extensão do arquivo feito upload for diferente de png e jpg ##########################
     if ($extensao != 'jpg' && $extensao != 'png') {
         die('Tipo de arquivo não aceito!');
     }
 
+    ########################## definido o novo caminho que o arquivo vai ficar ##########################
     $path = $pasta . $novoNomeDoArquivo . '.' . $extensao;
-    $deu_certo = move_uploaded_file($arquivo['tmp_name'], $path);
 
+    ########################## move o arquivo e verifica se foi possível movê-lo para seu novo caminho ##########################
+    $deu_certo = move_uploaded_file(
+        $arquivo['tmp_name'], #---nome temporario que o arquivo recebe quando é feito upload usando a superglobal FILE[]
+        $path);
+
+    ########################## caso tenha dado certo mover para o novo caminho, adiciona um registro desse arquivo no banco de dados ##########################
     if ($deu_certo) {
         $conn->query("INSERT INTO arquivos(nome, path) VALUES ('$nomeDoArquivo','$path')") or die('Erro: ' . $conn->error);
         echo "
@@ -38,8 +57,6 @@ if (isset($_FILES['arquivo'])) {
 }
 
 $result = $conn->query('SELECT * FROM arquivos') or die($conn->error);
-
-
 
 ?>
 
