@@ -175,47 +175,6 @@ if ($result) {
         </div>
     </div>
 </div>
-<!---------------------------------------------------------------------------------------------------------------------------------------
-<div class="modal fade" id='modalVender' tabindex="-1" role="dialog" aria-label="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <form action="./atualizar.php" method="post">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Vender Produto</h5>
-                </div>
-                <div class="modal-body">
-                    <div class="modal-body">
-                        <div class="form-floating mb-3">
-                            <input type="text" id="vendasVerId" name="id" class="form-control">
-                            <label>Id</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="text" id="vendasVerProduto" name="produto" class="form-control" disabled>
-                            <label>Produto</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="number" id="vendasVerQuantidade" class="form-control" disabled>
-                            <label>Quantidade</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="number" id="vendasEditarVenda" name="venda" class="form-control">
-                            <label>Venda</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type='hidden' name='vender' value='vender'></input>
-                            <input type="hidden" id="vendasHiddenQuantidade" name="quantidade" class="form-control">
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" onclick="fecharModalVender()">Fechar</button>
-                            <input type="submit" class="btn btn-primary" value="Vender">
-                        </div>
-                    </div>
-            </form>
-        </div>
-    </div>
-</div>
---------------------------------------------------------------------------------------------------------------------------------------->
-
 <div class="modal fade" id='modalFiltro' tabindex="-1" role="dialog" aria-label="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
