@@ -1,0 +1,82 @@
+----------CONTAINERS
+.container = define um container de largura fixa
+.container-fluid = tem/ocupa 100% da largura
+.container-sm|md|lg|xl|xxl-x = responsividade de telas = deixa o elemento com a largura 100% de acordo com a widht device
+
+---------MARGENS
+.m-x = aplica margem
+.mt = margem top
+.ml = margem left
+.mr = margem right
+.mb = margem bottom
+
+---------PADDINGS
+.p-x = aplica padding ao elemento(preenchimento interno)
+.pl-x | pr-x | pt-x| pb-x = padding left, rigth, top, botton
+
+---------BORDAS/BACKGROUND/TEXT
+.border = aplica borda ao elemento
+.bg-primary = aplica cor ao background
+.text-white = aplica cor ao texto
+.mark = usando na tag <mark> para deixar o background amarelo
+.text-primary-50 = indica texto fonte azul e opacidade 50%
+.text-bg-<cor> = vai definir automaticamente a melhor cor de fonte de acordo com a cor do bg
+
+--------GRID
+.row = para especificar uma linha e poder usar o .col
+.col-x = especificar uma coluna e seu tamanho na grade
+.col = para especificar uma coluna (sem especificar o tamanho, automaticamente define o tamanho das grades do layout)
+.col-sm|md|lg|xl|xxl-x = responsividade de telas = deixa o elemento com a largura 100% de acordo com a widht device
+
+--------HEADINGS e TEXTOS
+.h1 -> .h6 = para especificar cabeçalhos
+.display-1 -> .display-6 = destacar mais que os cabeçalhos, fonte mais leve e tamanho maior em relação ao cabeçalhos
+.small = usando nas tags <small> para servir de texto secundário ao cabeçalhos
+.blockquote = usando nas tags <blackquote> (usando para fazer citações)
+.blockquote-footer = usado para indicar a fonte da citação
+.text-center|start|end = indica o alinhamento do texto
+.lead = destacar um paragrafo
+.text-decoration-none = remove o sublinhado de um link
+.text-lowercase = deixa texto em caixa alinhamento
+.text-uppercase = caixa alinhamento
+.text-capitalize = texto com letras capitularizadas
+.list-inline = elementos da lista na mesma linha
+
+-----TABLES
+.table = define que é borda e estiliza ela
+.table-striped = define um estilo de listas de zebras a tabela (cores alternadas)
+.table-bordered = define bordas para a tabela
+.table-hover = adiciona um efeito de hover para a tabela
+.table-borderless = sem bordas
+.table-<cor> = define a cor da tabela/elemento da tabela pode ser usado nas tags relacionadas a <table>
+.table-responsive = caso a tabela seja muito grande horizontalmente, adiciona uma scroll bar para ver o conteudo
+.table-responsive-sm|md... = definir quando ela deve ser responsiva dependendo da telas
+
+-----IMAGENS
+.rounded = cantos arredondados
+.rounded-circle = formato de circulo
+.img-thumbnail = molda a imagem em um miniatura
+.float-start|end = alinha uma imagem esqueda ou direita
+-Centralizar imagem:
+    .mx-auto e .d-block
+.img-fluid = imagem responsiva
+
+----ALERTAS
+.alert .alert-<cor> = define uma mensagem de alerta
+.alert-link para qualquer link dentro da caixa de alerta para criar "links coloridos correspondentes"
+-Fechas alertas
+    <div class="alert alert-success alert-dismissible">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <strong>Success!</strong> This alert box could indicate a successful or positive action.
+    </div>
+.fade e .show adiciona efeito quando fechar o alerta
+
+-----BOTOES
+.btn = define o botao
+.btn-<cor> - indica botao com uma cor
+.btn-outline-<cor> = botão com cor e efeito hover
+.btn-lg btn-sm = botao tamanho grande e pequeno
+.btn-block = para botao ficar com largura 100% - usar d.grid no elemento padding
+.gap-<numero> = para definir o espaçamento desejado se por acaso tiver mais de um botão com largura 100% - não é usando no elemento botão, somente no elemento pai
+.disabled = é usado em elementos como <a> que não suportam o atributo html disabled, mas também essa classe pode ser usado em <button> normal
+
