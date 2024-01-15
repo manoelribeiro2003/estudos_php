@@ -6,9 +6,8 @@ $DoisMegaBytes = 2097152;
 
 if (isset($_FILES['arquivo'])) {
 
-    ########################## Variavel arquivo vira um objeto do tipo file ###############################
     $arquivo = $_FILES['arquivo'];
-
+    var_dump($arquivo);
     ########################## caso dê algum tipo de erro o programa morre ##########################
     if ($arquivo['error']) {
         die('Falha ao enviar arquivo');
@@ -28,8 +27,7 @@ if (isset($_FILES['arquivo'])) {
     #----------o novo nome do arquivo com a função para deixar seu nome unico---------
     $novoNomeDoArquivo = uniqid(); 
     #----- guarda a extensão do arquivo
-    $extensao = strtolower( #---transforma a extensão em minusculo
-        pathinfo($nomeDoArquivo, PATHINFO_EXTENSION));#--- função que retorna a informação da extensão do nome do arquivo
+    $extensao = strtolower(pathinfo($nomeDoArquivo, PATHINFO_EXTENSION));#--- retorna a extensão do nome do arquivo em minusculo
 
     ########################## se a extensão do arquivo feito upload for diferente de png e jpg ##########################
     if ($extensao != 'jpg' && $extensao != 'png') {
