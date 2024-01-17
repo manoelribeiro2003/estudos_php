@@ -308,7 +308,7 @@ if ($result) {
                 },
                 
                 success: (data) => {
-                    alert("aaaaaaaaa");
+                    alert(data);
                     tabela.innerHTML = data;
                     btnRemoverFiltro[0].classList.remove("d-none");
 

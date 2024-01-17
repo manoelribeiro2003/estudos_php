@@ -1,0 +1,10 @@
+#imagem2 {
+    position: absolute;
+    left: 200px;
+    top: 70%;
+    border-radius: 100%;
+  }
+  
+  #elemento-pai {
+    position: relative;
+  }
