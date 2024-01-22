@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adivinhacao</title>
+    <link rel="stylesheet" href="../bootstrap/bootstrap.min.css">
+    <script src="../bootstrap/bootstrap.min.js"></script>
+    <script src="../bootstrap/jquery.min.js"></script>
+    <script src="../bootstrap/popper.min.js"></script>
+</head>
+
+<body>
+    <div class='card container mt-2' id='cardInicio'>
+        <h1>Jogo da Forca</h1>
+        <input class='form-control m-2' type='text' id='chave' placeholder='Digite uma palavra'>
+        <button class='btn btn-primary m-2' onclick="iniciar()">Iniciar</button>
+    </div>
+    <div class="card container mt-2 d-none" id="cardJogo">
+        <div class="m-2">
+            <div class="row">
+                <div class="col ">
+                    <h1 class="p-2 card" id="palavra"></h1>
+                </div>
+                <div class="col- ">
+                    <h3 class="p-2 card" id="tentativas">Tentativas: </h3>
+                </div>
+                <div class="col- ">
+                    <h3 class="p-2 card" id="tentativa">0</h3>
+                </div>
+
+            </div>
+
+
+        </div>
+        <input class="form-control" type="text" id="letra" maxlength="1">
+        <button class="m-2 btn btn-primary" onclick="verificar()">Verificar</button>
+    </div>
+</body>
+
+<script>
+
+    chaveApoio = '';
+    function iniciar() {
+        chave = document.getElementById("chave").value;
+
+        for (let i = 0; i < chave.length; i++) {
+            chaveApoio += "?";
+        }
+
+        palavra = document.getElementById("palavra");
+        palavra.innerHTML = chaveApoio;
+
+        jogo = document.getElementById("cardJogo");
+        jogo.classList.remove("d-none");
+        cardIniciar = document.getElementById("cardInicio");
+        cardIniciar.classList.add("d-none");
+
+    }
+
+    contador = 0;
+    function verificar() {
+        letra = document.getElementById('letra');
+
+        for (let i = 0; i < chave.length; i++) {
+            if (letra.value == chave[i]) {
+                chaveApoio = chaveApoio.substring(0, i) + letra.value + chaveApoio.substring(i + 1, chave.length);
+            }
+        }
+        palavra.innerHTML = chaveApoio;
+
+        tentativa = document.getElementById('tentativa');
+        contador++;
+        tentativa.innerHTML = contador;
+
+        letra.value = "";
+
+        if (chave == chaveApoio) {
+            alert("Parabéns. Você ganhou! :)");
+        }
+    }
+
+</script>
+
+</html>
