@@ -1,16 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
   <title>Sobreposição de Imagens</title>
 </head>
+
 <body>
-  
-    <div id="elemento-pai">
-        <img width="100px" id="imagem2" src="../../Projeto-Amber-Live/home/imagens/65a2d12c898d5.jpg">
-        <img id="imagem1" src="../../Projeto-Amber-Live/home/imagens/quackity.png">
-    </div>
+
+  <div id="elemento-pai">
+    <img onmouseover="bigImg(this)" onmouseout="normalImg(this)" width="100px" id="imagem2"
+      src="../../Projeto-Amber-Live/home/imagens/edit-icon.png">
+
+    <img id="imagem1" src="../../Projeto-Amber-Live/home/imagens/quackity.png">
+  </div>
+
+  <script>
+
+    function bigImg(x) {
+      x.style.position = "absolute";
+      x.style.left = "196px";
+      x.style.top = "70%";
+      x.style.borderRadius = "100%";
+      x.style.border = "2px solid #c97373";
+      x.style.width = "70px";
+
+    }
+
+    function normalImg(x) {
+      x.style.position = "absolute";
+      x.style.left = "196px";
+      x.style.top = "64.5%";
+      x.style.borderRadius = "100%";
+      x.style.border = "2px solid #ffffff";
+      x.style.width = "100px";
+    }
+
+  </script>
+
 </body>
+
 </html>
