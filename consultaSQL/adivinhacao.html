@@ -17,17 +17,23 @@
         <input class='form-control m-2' type='text' id='chave' placeholder='Digite uma palavra'>
         <button class='btn btn-primary m-2' onclick="iniciar()">Iniciar</button>
     </div>
+
     <div class="card container mt-2 d-none" id="cardJogo">
         <div class="m-2">
+            <div class="row mt-5">
+                <div class="col-4"></div>
+                <canvas class="col-3" id="myCanvas" width="400" height="400"></canvas>
+                <div class="col-4"></div>
+            </div>
             <div class="row">
                 <div class="col ">
-                    <h1 class="p-2 card" id="palavra"></h1>
+                    <h1 class="p-2" id="palavra"></h1>
                 </div>
                 <div class="col- ">
-                    <h3 class="p-2 card" id="tentativas">Tentativas: </h3>
+                    <h3 class="p-2" id="tentativas">Tentativas: </h3>
                 </div>
                 <div class="col- ">
-                    <h3 class="p-2 card" id="tentativa">0</h3>
+                    <h3 class="p-2" id="tentativa">0</h3>
                 </div>
 
             </div>
@@ -57,6 +63,57 @@
         cardIniciar = document.getElementById("cardInicio");
         cardIniciar.classList.add("d-none");
 
+        //canvas----------------------------
+
+        //cabeça
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        ctx.beginPath();
+        ctx.arc(200, 100, 40, 0, 2 * Math.PI);
+        ctx.stroke();
+
+        //tronco
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        ctx.moveTo(200, 250);
+        ctx.lineTo(200, 140);
+        ctx.stroke();
+
+        // braço direito
+        ctx.moveTo(130, 210);
+        ctx.lineTo(200, 140);
+        ctx.stroke();
+
+        // braço esquerdo
+        ctx.moveTo(270, 210);
+        ctx.lineTo(200, 140);
+        ctx.stroke();
+
+        // perna direita
+        ctx.moveTo(200, 250);
+        ctx.lineTo(140, 320);
+        ctx.stroke();
+
+        //perna esquerda
+        ctx.moveTo(200, 250);
+        ctx.lineTo(260, 320);
+        ctx.stroke();
+
+        //corda
+        ctx.moveTo(200, 60);
+        ctx.lineTo(200, 0);
+        ctx.stroke();
+
+        //haste horizontal
+        ctx.moveTo(200, 0);
+        ctx.lineTo(0, 0);
+        ctx.stroke();
+
+        //haste vertical
+        ctx.moveTo(0, 0);
+        ctx.lineTo(0, 400);
+        ctx.stroke();
+
     }
 
     contador = 0;
@@ -80,6 +137,57 @@
             alert("Parabéns. Você ganhou! :)");
         }
     }
+
+
+    //cabeça
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    ctx.beginPath();
+    ctx.arc(200, 100, 40, 0, 2 * Math.PI);
+    ctx.stroke();
+
+    //tronco
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    ctx.moveTo(200, 250);
+    ctx.lineTo(200, 140);
+    ctx.stroke();
+
+    // braço direito
+    ctx.moveTo(130, 210);
+    ctx.lineTo(200, 140);
+    ctx.stroke();
+
+    // braço esquerdo
+    ctx.moveTo(270, 210);
+    ctx.lineTo(200, 140);
+    ctx.stroke();
+
+    // perna direita
+    ctx.moveTo(200, 250);
+    ctx.lineTo(140, 320);
+    ctx.stroke();
+
+    //perna esquerda
+    ctx.moveTo(200, 250);
+    ctx.lineTo(260, 320);
+    ctx.stroke();
+
+    //corda
+    ctx.moveTo(200, 60);
+    ctx.lineTo(200, 0);
+    ctx.stroke();
+
+    //haste horizontal
+    ctx.moveTo(200, 0);
+    ctx.lineTo(0, 0);
+    ctx.stroke();
+
+    //haste vertical
+    ctx.moveTo(0, 0);
+    ctx.lineTo(0, 400);
+    ctx.stroke();
+
 
 </script>
 
