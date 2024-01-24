@@ -42,6 +42,7 @@
         </div>
         <input class="form-control" type="text" id="letra" maxlength="1">
         <button class="m-2 btn btn-primary" onclick="verificar()">Verificar</button>
+        <button class="m-2 btn btn-primary" onclick="reiniciar()">Reiniciar</button>
     </div>
 </body>
 
@@ -116,11 +117,14 @@
 
     }
 
-    contador = 0;
+    qtdTentativas = 5;
+    var letrasDigitadas = [];
     function verificar() {
         letra = document.getElementById('letra');
+        letrasDigitadas.push(letra.value);
 
-        for (let i = 0; i < chave.length; i++) {
+        encontrou = false;
+        for (i = 0; i < chave.length; i++) {
             if (letra.value == chave[i]) {
                 chaveApoio = chaveApoio.substring(0, i) + letra.value + chaveApoio.substring(i + 1, chave.length);
             }
@@ -136,6 +140,48 @@
         if (chave == chaveApoio) {
             alert("Parabéns. Você ganhou! :)");
         }
+    }
+
+    qtdTentativas = 5;
+    var letrasDigitadas = [];
+    function verificar() {
+        letra = document.getElementById('letra');
+        letrasDigitadas.push(letra.value);
+
+        encontrou = false;
+        for (i = 0; i < chave.lenght; i++) {
+            if (letra.value == chave[i]) {
+                encontrou = true;
+                chaveApoio = chaveApoio.substring(0, i);
+            }
+        }
+    }
+
+    function funLetrasDigitadas() {
+        frase = 'Letras Digitadas: ';
+        pLetrasDigitadas = document.getElementById('letrasDigitadas');
+        for (i = 0; i < letrasDigitadas.lenght - 1; i++) {
+            frase += letrasDigitadas[i] + ", ";
+        }
+        frase += letrasDigitadas[i];
+        pLetrasDigitadas.innerHTML = frase;
+    }
+    
+    function finalizar() {
+        if (!qtdTentativas) {
+            jogo.classList.add("d-none");
+            alert("Fim de jogo, você perdeu!");
+            location.reload(true);
+        }
+        if (chaveApoio == chave) {
+            jogo.classList.add('d-none');
+            alert("Fim de jogo, você perdeu!");
+            location.reload(true);
+        }
+    }
+
+    function reiniciar() {
+        location.reload(true);
     }
 
 
