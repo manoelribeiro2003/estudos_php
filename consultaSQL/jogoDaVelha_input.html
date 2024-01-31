@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jogo da Velha</title>
+    <title>Jogo da Velha Input</title>
     <link rel="stylesheet" href="../bootstrap/bootstrap.min.css">
     <script src="../bootstrap/bootstrap.min.js"></script>
 
@@ -21,7 +21,7 @@
     <div class="mt-5 container" id="cardInicio">
 
         <div class="row">
-            <h3 class="col m-3">Jogo da Velha</h1>
+            <h3 class="col m-3">Jogo da Velha Input</h1>
         </div>
         <div class="row m-2" id="l0">
             <div class="col- mr-1 ml-1 ">
@@ -80,26 +80,26 @@
         function jogar() {
             linha = document.getElementById('linha').value;
             coluna = document.getElementById('coluna').value;
-            console.log('Linha: ',linha);
-            console.log('Coluna: ',coluna);
+            console.log('Linha: ', linha);
+            console.log('Coluna: ', coluna);
             if (jogada < maxJogadas && venceu == false) {
-                console.log('Jogada: '+jogada);
+                console.log('Jogada: ' + jogada);
                 if (velha[linha][coluna] == "") {
                     if (quemJoga == 1) {
                         velha[linha][coluna] = "X";
                         quemJoga = 2;
-                        console.log('Quem joga: ',quemJoga);
+                        console.log('Quem joga: ', quemJoga);
                     } else {
                         velha[linha][coluna] = "O";
                         quemJoga = 1;
-                        console.log('Quem joga: ',quemJoga);
+                        console.log('Quem joga: ', quemJoga);
                     }
                     jogada++;
                 } else {
                     alert('Linha/coluna invalida!');
                 }
                 tela();
-                // venceu = verificar();
+                venceu = verificar();
             }
             if (venceu) {
                 btnJogar = document.getElementById('btnJogar');
@@ -110,12 +110,65 @@
         }
         function tela() {
             for (i = 0; i < 3; i++) {
-                for(j = 0; j < 3; j++){
-                    celula = document.getElementById('l'+i+'c'+j);
+                for (j = 0; j < 3; j++) {
+                    celula = document.getElementById('l' + i + 'c' + j);
                     // console.log("Valor da celula: ",celula.value);
                     celula.value = velha[i][j];
                 }
             }
+        }
+        function verificar() {
+            vitoria = false;
+            simbolos = ['X', 'O'];
+
+            for (i = 0; i < 2; i++) {
+
+                //verificar vitoria em linhas        
+                vitoria = false;
+                l = c = 0;
+                while (l < 3) {
+                    soma = 0;
+                    c = 0;
+                    while (c < 3) {
+                        if (velha[l][c] == simbolos[i]) {
+                            soma++;
+                        }
+                        c++;
+                    }
+                    if (soma == 3) {
+                        vitoria = true;
+                        break;
+                    }
+                    l++;
+                } if (vitoria) {
+                    alert('O jogador ' + simbolos[i] + ' ganhou!');
+                    break;
+                }
+
+                //verificar vitoria em colunas        
+                l = c = 0;
+                while (c < 3) {
+                    soma = 0;
+                    l = 0;
+                    while (l < 3) {
+                        if (velha[l][c] == simbolos[i]) {
+                            soma++;
+                        }
+                        l++;
+                    }
+                    if (soma == 3) {
+                        vitoria = true;
+                        break;
+                    }
+                    c++;
+                } if (vitoria) {
+                    alert('O jogador ' + simbolos[i] + ' ganhou!');
+                    break;
+                }
+
+            }
+
+            return vitoria;
         }
     </script>
 </body>

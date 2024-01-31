@@ -4,14 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jogo da Velha</title>
+    <title>Jogo da Velha Botão</title>
     <link rel="stylesheet" href="../bootstrap/bootstrap.min.css">
     <script src="../bootstrap/bootstrap.min.js"></script>
 
     <style>
-        .botao{
+        .botao {
             width: 80px !important;
             height: 50px !important;
+            background-color: #ebebeb;
         }
     </style>
 </head>
@@ -20,42 +21,165 @@
     <div class="mt-5 container" id="cardInicio">
 
         <div class="row">
-            <h3 class="col m-3">Jogo da Velha</h1>
+            <h3 class="col m-3">Jogo da Velha Botão</h1>
         </div>
         <div class="row m-2" id="l0">
             <div class="col- mr-1 ml-1 ">
-                <button class="botao btn pt-4 pl-5" id="l0c1"></button>
+                <button type="button" class="botao btn" onclick="inserir(this)" id="l0c0"></button>
             </div>
             <div class="col- mr-1 ml-1 ">
-                <button class="botao btn pt-4 pl-5" id="l0c2"></button>
+                <button type="button" class="botao btn" onclick="inserir(this)" id="l0c1"></button>
             </div>
             <div class="col- mr-1 ml-1 ">
-                <button class="botao btn pt-4 pl-5" id="l0c3"></button>
+                <button type="button" class="botao btn" onclick="inserir(this)" id="l0c2"></button>
             </div>
         </div>
         <div class="row m-2" id="l1">
             <div class=" col- mr-1 ml-1">
-                <button class="botao btn pt-4 pl-5" id="l1c0"></button>
+                <button type="button" class="botao btn" onclick="inserir(this)" id="l1c0"></button>
             </div>
             <div class=" col- mr-1 ml-1">
-                <button class="botao btn pt-4 pl-5" id="l1c1"></button>
+                <button type="button" class="botao btn" onclick="inserir(this)" id="l1c1"></button>
             </div>
             <div class=" col- mr-1 ml-1">
-                <button class="botao btn pt-4 pl-5" id="l1c2"></button>
+                <button type="button" class="botao btn" onclick="inserir(this)" id="l1c2"></button>
             </div>
         </div>
         <div class="row m-2" id="l2">
             <div class=" col- mr-1 ml-1">
-                <button class="botao btn pt-4 pl-5" id="l2c0"></button>
+                <button type="button" class="botao btn" onclick="inserir(this)" id="l2c0"></button>
             </div>
             <div class=" col- mr-1 ml-1">
-                <button class="botao btn pt-4 pl-5" id="l2c1"></button>
+                <button type="button" class="botao btn" onclick="inserir(this)" id="l2c1"></button>
             </div>
             <div class=" col- mr-1 ml-1">
-                <button class="botao btn pt-4 pl-5" id="l2c2"></button>
+                <button type="button" class="botao btn" onclick="inserir(this)" id="l2c2"></button>
             </div>
         </div>
+        <button class="btn btn-primary m-1 col-3" onclick="reiniciar()" id="btnReiniciar">Reiniciar</button>
     </div>
+
+    <script>
+        velha = [
+            ["", "", ""],
+            ["", "", ""],
+            ["", "", ""]
+        ];
+        quemJoga = 1;
+
+        function inserir(botao) {
+            if (quemJoga == 1) {
+                botao.innerHTML = 'X';
+                botao.value = 'X';
+                botao.disabled = true;
+                quemJoga = 2;
+                jogar(botao)
+            } else {
+                botao.innerHTML = 'O';
+                botao.value = 'O';
+                botao.disabled = true;
+                quemJoga = 1;
+                jogar(botao);
+            }
+
+        }
+
+        venceu = false;
+        jogada = 0;
+        maxJogadas = 9;
+        function jogar(botao) {
+            botao.value;
+            if (jogada < maxJogadas && venceu == false) {
+                if (velha[linha][coluna] == "") {
+                    if (quemJoga == 1) {
+                        velha[linha][coluna] = "X";
+                        quemJoga = 2;
+                    } else {
+                        velha[linha][coluna] = "O";
+                        quemJoga = 1;
+                    }
+                    jogada++;
+                } else {
+                    alert('Linha/coluna invalida!');
+                }
+                tela();
+                venceu = verificar();
+            }
+            if (venceu) {
+                btnJogar = document.getElementById('btnJogar');
+                btnJogar.classList.add('d-none');
+                btnReiniciar = document.getElementById('btnReiniciar');
+                btnReiniciar.classList.remove('d-none');
+            }
+        }
+        function tela() {
+            for (i = 0; i < 3; i++) {
+                for (j = 0; j < 3; j++) {
+                    celula = document.getElementById('l' + i + 'c' + j);
+                    // console.log("Valor da celula: ",celula.value);
+                    celula.value = velha[i][j];
+                }
+            }
+        }
+
+        function verificar() {
+            vitoria = false;
+            simbolos = ['X', 'O'];
+
+            for (i = 0; i < 2; i++) {
+
+                //verificar vitoria em linhas        
+                vitoria = false;
+                l = c = 0;
+                while (l < 3) {
+                    soma = 0;
+                    c = 0;
+                    while (c < 3) {
+                        if (velha[l][c] == simbolos[i]) {
+                            soma++;
+                        }
+                        c++;
+                    }
+                    if (soma == 3) {
+                        vitoria = true;
+                        break;
+                    }
+                    l++;
+                } if (vitoria) {
+                    alert('O jogador ' + simbolos[i] + ' ganhou!');
+                    break;
+                }
+
+                //verificar vitoria em colunas        
+                l = c = 0;
+                while (c < 3) {
+                    soma = 0;
+                    l = 0;
+                    while (l < 3) {
+                        if (velha[l][c] == simbolos[i]) {
+                            soma++;
+                        }
+                        l++;
+                    }
+                    if (soma == 3) {
+                        vitoria = true;
+                        break;
+                    }
+                    c++;
+                } if (vitoria) {
+                    alert('O jogador ' + simbolos[i] + ' ganhou!');
+                    break;
+                }
+
+            }
+
+            return vitoria;
+        }
+
+        function reiniciar() {
+            location.reload(true);
+        }
+    </script>
 </body>
 
 </html>
