@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -117,52 +117,162 @@
                 }
             }
         }
+
+        function reiniciar() {
+            location.reload(true);
+        }
         function verificar() {
             vitoria = false;
             simbolos = ['X', 'O'];
 
             for (i = 0; i < 2; i++) {
 
-                //verificar vitoria em linhas        
+                //WHILE verificar vitoria em linhas        
+                // vitoria = false;
+                // l = c = 0;
+                // while (l < 3) {
+                //     soma = 0;
+                //     c = 0;
+                //     while (c < 3) {
+                //         if (velha[l][c] == simbolos[i]) {
+                //             soma++;
+                //         }
+                //         c++;
+                //     }
+                //     if (soma == 3) {
+                //         vitoria = true;
+                //         break;
+                //     }
+                //     l++;
+                // } if (vitoria) {
+                //     alert('O jogador ' + simbolos[i] + ' ganhou!');
+                //     break;
+                // }
+
+                //FOR verificar vitoria em linhas        
                 vitoria = false;
-                l = c = 0;
-                while (l < 3) {
+                for (l = 0; l < 3; l++) {
                     soma = 0;
-                    c = 0;
-                    while (c < 3) {
+                    for (c = 0; c < 3; c++) {
                         if (velha[l][c] == simbolos[i]) {
                             soma++;
                         }
-                        c++;
                     }
                     if (soma == 3) {
                         vitoria = true;
                         break;
                     }
-                    l++;
                 } if (vitoria) {
                     alert('O jogador ' + simbolos[i] + ' ganhou!');
                     break;
                 }
 
-                //verificar vitoria em colunas        
-                l = c = 0;
-                while (c < 3) {
+                //WHILE verificar vitoria em colunas        
+                // l = c = 0;
+                // while (c < 3) {
+                //     soma = 0;
+                //     l = 0;
+                //     while (l < 3) {
+                //         if (velha[l][c] == simbolos[i]) {
+                //             soma++;
+                //         }
+                //         l++;
+                //     }
+                //     if (soma == 3) {
+                //         vitoria = true;
+                //         break;
+                //     }
+                //     c++;
+                // } if (vitoria) {
+                //     alert('O jogador ' + simbolos[i] + ' ganhou!');
+                //     break;
+                // }
+
+                //FOR verificar vitoria em colunas        
+                for (c = 0; c < 3; c++) {
                     soma = 0;
-                    l = 0;
-                    while (l < 3) {
+                    for (l = 0; l < 3; l++) {
                         if (velha[l][c] == simbolos[i]) {
                             soma++;
                         }
-                        l++;
                     }
                     if (soma == 3) {
                         vitoria = true;
                         break;
                     }
-                    c++;
                 } if (vitoria) {
                     alert('O jogador ' + simbolos[i] + ' ganhou!');
+                    break;
+                }
+
+                //WHILE verificar vitoria diagonal 1
+                // soma = 0;
+                // idiagl = 0;
+                // idiagc = 0;
+                // while (idiagl <= 2) {
+                //     if (velha[idiagl][idiagc] == simbolos[i]) {
+                //         soma++;
+                //         console.log('Soma na diagonal 1: ', soma);
+                //     }
+                //     idiagl++;
+                //     idiagc++;
+                // } if (soma == 3) {
+
+                //     alert("O jogador " + simbolos[i] + " ganhou");
+                //     vitoria = true;
+                //     break;
+                // }
+
+                //WHILE verificar vitoria diagonal 2
+                // soma = 0;
+                // idiagl = 0;
+                // idiagc = 2;
+                // while (idiagc >= 0) {
+                //     if (velha[idiagl][idiagc] == simbolos[i]) {
+                //         soma++;
+                //         console.log('Soma na diagonal 2: ', soma);
+                //     }
+                //     idiagl++;
+                //     idiagc--;
+                // } if (soma == 3) {
+                //     alert("O jogador " + simbolos[i] + " ganhou");
+                //     vitoria = true;
+                //     break;
+                // }
+
+                //FOR verificar vitoria diagonal 1
+                soma = 0;
+                idiagl = 0;
+                idiagc = 0;
+                for (x = i; x < 3; x++) {
+                    if (velha[idiagl][idiagc] == simbolos[i]) {
+                        soma++;
+                        console.log('Soma na diagonal 1: ', soma);
+                    }
+                    idiagl++;
+                    idiagc++;
+                } if (soma == 3) {
+
+                    alert("O jogador " + simbolos[i] + " ganhou");
+                    vitoria = true;
+                    break;
+                }
+
+                //FOR verificar vitoria diagonal 2
+                soma = 0;
+                idiagl = 0;
+                idiagc = 2;
+                for (x = i; x < 3; x++) {
+                    if (velha[idiagl][idiagc] == simbolos[i]) {
+                        soma++;
+                        console.log('Soma na diagonal 1: ', soma);
+                    }
+                    idiagl++;
+                    idiagc--;
+                } if (soma == 3) {
+
+                    alert("O jogador " + simbolos[i] + " ganhou");
+                    vitoria = true;
                     break;
                 }
 
