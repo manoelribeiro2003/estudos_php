@@ -13,6 +13,12 @@
             width: 80px !important;
             height: 50px !important;
             background-color: #ebebeb;
+            text-align: center;
+            padding: 0 !important;
+        }
+
+        .botao:disabled {
+            opacity: 100%;
         }
     </style>
 </head>
@@ -262,7 +268,7 @@
                 soma = 0;
                 idiagl = 0;
                 idiagc = 2;
-                for (x = i; x < 3; x++) {
+                for (x = 0; x < 3; x++) {
                     if (velha[idiagl][idiagc] == simbolos[i]) {
                         soma++;
                         console.log('Soma na diagonal 1: ', soma);
