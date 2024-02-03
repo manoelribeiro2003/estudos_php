@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --ep-effect-trans-y-normal: 0; /* Valor padrão de translação vertical */
+      --ep-effect-trans-y-hover: -20px; /* Valor de translação vertical durante o hover */
+    }
+
+    .custom-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #3498db;
+      color: #fff;
+      transition: transform 0.3s ease-out; /* Adiciona uma transição suave para a transformação */
+    }
+
+    .custom-button:hover {
+      transform: translateY(var(--ep-effect-trans-y-hover, var(--ep-effect-trans-y-normal)));
+    }
+  </style>
+</head>
+<body>
+<p>dfd</p>
+<p>dfd</p>
+<p>dfd</p>
+<p>dfd</p>
+  <button class="custom-button">Hover me</button>
+
+</body>
+</html>

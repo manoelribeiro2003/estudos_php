@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Velha Botão</title>
+    <link rel="stylesheet" href="../bootstrap/bootstrap.min.css">
+    <script src="../bootstrap/bootstrap.min.js"></script>
+
+    <style>
+        .botao {
+            width: 80px !important;
+            height: 50px !important;
+            background-color: #ebebeb !important;
+            color: black;
+        }
+
+        .botao:disabled {
+            opacity: 100% !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mt-5 container" id="cardInicio">
+
+        <div class="row">
+            <h3 class="col m-3">Jogo da Velha Botão</h1>
+        </div>
+        <div class="row m-2" id="l0">
+            <div class="col- mr-1 ml-1 ">
+                <button type="button" class="botao btn" onclick="marcar(this)" id="l0c0"></button>
+            </div>
+            <div class="col- mr-1 ml-1 ">
+                <button type="button" class="botao btn" onclick="marcar(this)" id="l0c1"></button>
+            </div>
+            <div class="col- mr-1 ml-1 ">
+                <button type="button" class="botao btn" onclick="marcar(this)" id="l0c2"></button>
+            </div>
+        </div>
+        <div class="row m-2" id="l1">
+            <div class=" col- mr-1 ml-1">
+                <button type="button" class="botao btn" onclick="marcar(this)" id="l1c0"></button>
+            </div>
+            <div class=" col- mr-1 ml-1">
+                <button type="button" class="botao btn" onclick="marcar(this)" id="l1c1"></button>
+            </div>
+            <div class=" col- mr-1 ml-1">
+                <button type="button" class="botao btn" onclick="marcar(this)" id="l1c2"></button>
+            </div>
+        </div>
+        <div class="row m-2" id="l2">
+            <div class=" col- mr-1 ml-1">
+                <button type="button" class="botao btn" onclick="marcar(this)" id="l2c0"></button>
+            </div>
+            <div class=" col- mr-1 ml-1">
+                <button type="button" class="botao btn" onclick="marcar(this)" id="l2c1"></button>
+            </div>
+            <div class=" col- mr-1 ml-1">
+                <button type="button" class="botao btn" onclick="marcar(this)" id="l2c2"></button>
+            </div>
+        </div>
+        <button class="btn btn-primary m-1 col-3" onclick="reiniciar()" id="btnReiniciar">Reiniciar</button>
+    </div>
+
+    <script>
+        velha = [
+            ["", "", ""],
+            ["", "", ""],
+            ["", "", ""]
+        ];
+        quemJoga = 1;
+        function marcar(botao) {
+            if (quemJoga == 1) {
+                botao.innerHTML = 'X';
+                botao.value = 'X';
+                botao.disabled = true;
+                jogar(botao)
+            } else if (quemJoga == 2) {
+                botao.innerHTML = 'O';
+                botao.value = 'O';
+                botao.disabled = true;
+                jogar(botao);
+            }
+
+        }
+
+        venceu = false;
+        jogada = 0;
+        maxJogadas = 9;
+        function jogar(botao) {
+            posicao = botao.id;
+            linha = posicao.substring(1, 2);
+            coluna = posicao.substring(3, 4);
+            // console.log('Resultado substring linha: ', linha);
+            // console.log('Resultado substring coluna: ', coluna);
+            if (jogada < maxJogadas && !venceu) {
+                if (velha[linha][coluna] == "") {
+                    if (quemJoga == 1) {
+                        velha[linha][coluna] = "X";
+                        console.log('Velha: ', velha);
+                        quemJoga = 2;
+                    } else if (quemJoga == 2) {
+                        velha[linha][coluna] = "O";
+                        console.log('Velha: ', velha);
+                        quemJoga = 1;
+                    }
+                    jogada++;
+                } else {
+                    alert('Linha/coluna invalida!');
+                }
+                tela();
+                venceu = verificar();
+            }
+            if (venceu) {
+                btnJogar = document.getElementById('btnJogar');
+                btnJogar.classList.add('d-none');
+                btnReiniciar = document.getElementById('btnReiniciar');
+                btnReiniciar.classList.remove('d-none');
+            }
+        }
+        function tela() {
+            for (i = 0; i < 3; i++) {
+                for (j = 0; j < 3; j++) {
+                    celula = document.getElementById('l' + i + 'c' + j);
+                    celula.value = velha[i][j];
+                }
+            }
+        }
+
+        function verificar() {
+            vitoria = false;
+            simbolos = ['X', 'O'];
+
+            for (i = 0; i < 2; i++) {
+
+                //verificar vitoria em linhas        
+                vitoria = false;
+                l = c = 0;
+                while (l < 3) {
+                    soma = 0;
+                    c = 0;
+                    while (c < 3) {
+                        if (velha[l][c] == simbolos[i]) {
+                            soma++;
+                        }
+                        c++;
+                    }
+                    if (soma == 3) {
+                        vitoria = true;
+                        break;
+                    }
+                    l++;
+                } if (vitoria) {
+                    alert('O jogador ' + simbolos[i] + ' ganhou!');
+                    break;
+                }
+
+                //verificar vitoria em colunas        
+                l = c = 0;
+                while (c < 3) {
+                    soma = 0;
+                    l = 0;
+                    while (l < 3) {
+                        if (velha[l][c] == simbolos[i]) {
+                            soma++;
+                        }
+                        l++;
+                    }
+                    if (soma == 3) {
+                        vitoria = true;
+                        break;
+                    }
+                    c++;
+                } if (vitoria) {
+                    alert('O jogador ' + simbolos[i] + ' ganhou!');
+                    break;
+                }
+
+                //FOR verificar vitoria diagonal 1
+                for(let x = 0; x < 3; x++){
+                    for(let y = 0; y < 3; y++){
+                        if(velha[x][y] == simbolos[i]){
+                            soma++;
+                            console.log('Soma na diagonal 1: ', soma);
+                        }
+                    }
+                    if(soma == 3){
+                        alert('O jogador ' + simbolos[i] + ' ganhou!');
+                        break;
+                    }
+                }
+
+                //FOR verificar vitoria diagonal 2
+                for(let x = 0; x < 3; x++){
+                    for(let y = 2; y >= 0; y--){
+                        if(velha[x][y] == simbolos[i]){
+                            vitoria = true;
+                            soma++;
+                        }
+                    }
+                    if(soma == 3){
+                        alert('O jogador ' + simbolos[i] + ' ganhou!');
+                        vitoria = true;
+                        break;
+                    }
+                }
+
+
+            }
+
+            return vitoria;
+        }
+
+        function reiniciar() {
+            location.reload(true);
+        }
+    </script>
+</body>
+
+</html>
