@@ -1,0 +1,95 @@
+body {
+    background-color: black;
+    font-family: 'Roboto', sans-serif;
+}
+
+.wrapper {
+    display: flex;
+    /*utilizado para transformar um container em um container flexivel
+                    Em um contêiner flexível, os elementos filhos podem ser organizados 
+                    em uma linha ou coluna, permitindo um controle mais flexível sobre o layout.*/
+
+    /*flex-flow: row wrap;*/
+    /*flex-flow é uma propriedade abreviada que combina flex-direction e flex-wrap*/
+
+    flex-direction: row;
+    /*especifica que os itens flexíveis dentro de .wrapper devem ser organizados em uma linha*/
+
+    flex-wrap: wrap;
+    /*permite que os itens flexíveis que não cabem em uma linha se movam para a próxima linha*/
+
+    text-align: center;
+}
+
+.wrapper>* {
+    padding: 10px;
+    margin: 10px;
+    flex: 1 100%;
+    /*o 1 significa que os itens podem crescer proporcionalmente ao espaço disponivel dentro do mesmo container flexivel
+                    e o 100% define o tamanho inicial como 100% da largura total disponivel*/
+}
+
+.header {
+    background-color: #FFCC00;
+    height: 120px;
+}
+
+.footer {
+    background-color: #66CCFF;
+    height: 80px;
+}
+
+.main {
+    background-color: #FF6667;
+    height: 300px;
+}
+
+.side1 {
+    background-color: #65CC99;
+    height: 120px;
+
+}
+
+.side2 {
+    background-color: #9999FF;
+    height: 60px;
+
+}
+
+@media all and (min-width: 800px) {
+
+    .main {
+        flex: 3;
+        order: 2;
+    }
+
+    .side1 {
+        order: 2;
+        /*A propriedade order controla a ordem em que os itens aparecem no contêiner flexível.*/
+        flex: 1;
+        height: 300px;
+    }
+
+    .side2 {
+        order: 1;
+        flex: 1;
+        height: 300px;
+    }
+
+    .footer {
+        order: 4;
+    }
+
+
+}
+
+@media all and (min-width: 600px) and (max-width: 799px) {
+    .side {
+        flex: 1;
+    }
+
+    .side2 {
+        height: 120px;
+    }
+
+}

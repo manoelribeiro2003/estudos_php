@@ -1,0 +1,197 @@
+/* aula 2 *//* ---------------------------------------------------------------- */
+
+/* body{
+    background-color: black;
+}
+h1{
+    color: white;
+    font-family: "ubuntu", sans-serif;
+}
+p{
+    color: #00FF73;
+    font-family:"ubuntu", sans-serif;
+    font-style: italic;
+    font-weight: bolder;
+    text-decoration: dotted underline;
+} */
+/* ---------------------------------------------------------------- */
+
+
+/* aula 3 *//* ---------------------------------------------------------------- */
+/* h1{
+    border-top-style: dotted;
+    border-bottom-style: dotted;
+    border-left-style: double;
+    border-left-width: 10px;
+    border-left-color: silver;
+}
+p{
+    border-style: outset;
+    border-width: 5px;
+    border-color: gold;
+    border-radius: 10px;
+    padding: 5px;
+} */
+/* ---------------------------------------------------------------- */
+
+/* aula 4 *//* ---------------------------------------------------------------- */
+/* body {
+    background-image: url(./bro-code-image.jpeg);
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* A propriedade CSS background-attachment é utilizada para determinar se uma imagem de fundo rola junto com o conteúdo da página ou permanece fixa enquanto o conteúdo é rolado */
+    /* background-position: center; */
+    /* background-size: cover; A propriedade CSS background-size: cover; é utilizada para especificar o dimensionamento de uma imagem de fundo em relação ao elemento contêiner. */
+/* } */
+
+/* p,h1 {
+    background: linear-gradient(to top, skyblue, lightgreen);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
+} */
+/* ---------------------------------------------------------------- */
+
+
+/* aula 5 *//* ---------------------------------------------------------------- */
+/* body{
+    margin: 0px;
+}
+
+#box1{
+    border: 5px solid;
+    width: 250px;
+    height: 250px;
+    font-size: 22px;
+    background-color: lightgreen; */
+
+    /* margin-top: 20px;
+    margin-left: 50%;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    margin: 20px; */
+
+    /* margin-left: 50% */
+    /* margin-left: auto; /* o auto deixa automaticamente fixado na margem desejada*/
+    /* margin-right: auto; usando as duas configurações de auto, o elemento fica horizontalmente centralizado */
+/* }
+#box2{
+    border: 5px solid;
+    width: 250px;
+    height: 250px;
+    font-size: 22px;
+    background-color: lightblue;
+} */
+/* ---------------------------------------------------------------- */
+
+/*aula 6*//* ---------------------------------------------------------------- */
+/* img{
+    border: 2px solid tomato;
+    margin: 2px;
+    float: left; /*os elementos fluirao ao seu redor e a sua posicao é a esquerda*/
+    /* clear: both; é usada para indicar que um elemento não deve permitir que outros elementos flutuem ao seu redor na direção especificada */
+/* }
+.box{
+    float: right;
+} */
+/* ---------------------------------------------------------------- */
+
+/*aula 7*//* ---------------------------------------------------------------- */
+/* #parentBox1{
+    position: absolute;
+}
+#box1{
+    border: 1px solid;
+    height: 300px;
+    width: 300px;
+    background-color: skyblue;
+
+    position: absolute; /*absolute vai considerar seu parente aquele que nao tiver sua posicao nao estatica como parentBox1, se nao tiver ele vai considerar a viewport*/
+    /* top: 50px;
+    left: 50px;
+}
+#box2{
+    position: absolute; 
+    border: 1px solid;
+    top: 50px;
+    height: 100px;
+    width: 100px;
+    background-color: lightgreen;
+} */
+/* ---------------------------------------------------------------- */
+
+/*aula 8*//* ---------------------------------------------------------------- */
+/* li:nth-child(1){
+    background-color: yellow;
+} */
+
+/* li:nth-child(3n){ a cada 3 elementos
+    background-color: yellow;
+} */
+
+/* li:nth-child(2n+2){ ou formula
+    background-color: yellow;
+} */
+/* ---------------------------------------------------------------- */
+
+
+/*aula 9*//* ---------------------------------------------------------------- */
+
+/* h1{
+    text-shadow: 0px 5px 5px yellow, 0px -5px 5px red;
+    
+}
+h1:hover{
+    box-shadow: 5px 5px 5px black;
+} */
+/* ---------------------------------------------------------------- */
+
+
+/*aula 10*//* ---------------------------------------------------------------- */
+
+/* .fa-youtube{
+    color: red;
+    width: 10px;
+}
+#yt{
+    width: 200px;
+} */
+/* ---------------------------------------------------------------- */
+
+
+/*aula 11*//* ---------------------------------------------------------------- */
+/* i{
+    transform: translateX(180px);
+    transform: translateY(180px);
+    transform: rotateY(180deg);
+    transform: scaleY(50%);
+    transform: skewY(50deg);
+    aqui voce pode colocar o que quiser tranformar, seja rotacao, inclinacao etc;
+} */
+/* ---------------------------------------------------------------- */
+
+
+/*aula 12*//* ---------------------------------------------------------------- */
+
+#box1{
+    width: 550px;
+    height: 255px;
+    background-color: red;
+    font-size: 225px;
+    text-align: center;
+
+    animation: mySlide;
+    animation-duration: 3s;
+    /* animation-delay: 3s; */
+    /* animation-iteration-count: 3; */
+    /* animation-play-state: running; */
+    animation-timing-function: ease-out; /*ease-alguma_coisa define que ela vai acelerar no comeco ou no final ou de outra maneira que definir*/
+}
+@keyframes mySlide{
+    from{
+        margin-left: 100%;
+    }
+    to{
+        margin-left: 0%;
+    }
+}
+/* ---------------------------------------------------------------- */
