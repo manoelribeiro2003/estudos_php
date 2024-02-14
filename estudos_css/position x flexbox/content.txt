@@ -1,0 +1,24 @@
+Display flex x positioning
+
+Display flex: é usando quando queremos alinhar e distribuir os conteudos filhos
+
+Positioning: para posicionar um elemento com alguma referencia
+
+-> Posicionamento padrao é o static: ele significa que a ordem que as coisas 
+aparecem no browser é a mesma ordem que aparece no codigo 
+
+-> O Posicionamento relative é relativo é como se tivesse seu container no local mas o
+conteudo em si está em outro lugar, relativo ao posicionamento que deveria ser
+
+Todos os Posicionamentos (exceto static) trabalham com algumas outras propriedades como 
+top, bottom, left, right
+
+-> Posicionamento Absolute: o Posicionamento absolute foge do fluxo natural do documento. 
+É como se seu container não existisse mais no html.
+Normalmente se usa um posicionamento absolute dentro de um position relative isso porque
+o posicionamento absolute sempre vai procurar por quem é o pai dele que tenha um valor de 
+posicionamento (exceto static)
+
+-> Posicionamento fixed é o mais facil pois este está sempre relacionado a view port
+
+-> Posicionamento sticky é um híbrido entre o relative e fixed

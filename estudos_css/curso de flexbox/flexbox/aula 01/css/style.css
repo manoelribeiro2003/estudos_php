@@ -1,0 +1,81 @@
+/*---flex container---*/
+.container{
+    background-color: #ccc;
+    height: 500px;
+
+    /*Para trabalhar com flexbox faz-se uso de um container que deseja que seja flexivel
+    e adiciona nele o comando display:flex e assim automaticamente outras propriedades 
+    sao adicionadas a esse container também*/
+    display: flex;
+
+    /*flex-direction vai definir a direcao dos itens que por padrao é row.
+    Existem row | column | row-reverse | column-reverse*/
+    flex-direction: row;
+
+    /*flex-wrap vai definir se os itens vao ter uma quebra de linha ou nao. O valor padrao é 
+    nowrap(sem quebra de linha). Wrap(permite a quebra de linha).*/
+    flex-wrap: nowrap;
+
+    /*flex-flow é uma forma reduzida de escrever o flex-direction e o flex-wrap*/
+    flex-flow: row wrap !important;
+
+    /*justify-content serve para fazer um alinhamento horizontal relativo ao container(eixo-x). 
+    O valor padrao é flex-start. 
+    Existem: space-between | flex-end | center | space-around*/
+    justify-content: stretch;
+
+    /*O align-items é responsável por fazer um alinhamento vertical relativo ao container. 
+    O valor padrao é stretch. Ele estica os itens filhos dentro container ao longo do eixo-y
+    para preencher todo o espaço disponível, mantendo assim a mesma altura.
+    Isso so se aplica se nao for definida a propriedade height dos filhos
+    Existem: flex-start | flex-end | center | baseline(alinha com base no conteudo html)*/
+    align-items: stretch;
+
+    /*faz um alinhamento vertical mas quando os itens estiverem em multiline, ou seja, quando
+    tiver uma quebra.
+    Ela afeta o alinhamento de todo o conteúdo dentro do contêiner, 
+    e não dos itens individualmente. */
+    align-content: flex-start;
+}
+
+.item{
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    margin: 5px;
+    width: 200px;
+
+    /*flex-grow é usado para controlar como os itens dentro de um contêiner 
+    flexível crescem para preencher o espaço disponível ao longo do eixo principal. */
+    flex-grow: 1;
+
+    /*flex-basis vai definir a largura inicial de cada item antes que qualquer
+    espaço seja distribuido ou consumido pelos itens*/
+    flex-basis: 20px;
+
+    /*flex-shrink determina a capacidade de um item flexível encolher em relação
+     aos outros itens*/
+     flex-shrink: 1;
+    
+}
+/*-----*/
+
+/*---flex items---*/
+.article-01{
+    order: 1;
+    
+    /*align-self serve para definir o alinhamento individual do item
+    O valor padrao é auto que respeita o align-items do container */
+    align-self: center;
+
+
+}
+.article-02{
+    order: 4;
+}
+.article-03{
+    order: 2;
+}
+.article-04{
+    order: 3;
+}
