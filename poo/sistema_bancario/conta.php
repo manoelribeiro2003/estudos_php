@@ -7,10 +7,10 @@ class Conta
    private $saldo = 0;
    private $senha = "";
 
-   public function selecionarConta($conta, $conn): array
+   public function selecionarConta($num_conta, $conn): array
    {
       try {
-         $sql = "SELECT * FROM contas WHERE conta = $conta";
+         $sql = "SELECT * FROM contas WHERE conta = $num_conta";
          $linha = $conn->selecionar($sql);
          return $linha;
       } catch (Exception $e) {
@@ -18,13 +18,20 @@ class Conta
       }
    }
 
-   //  public function __construct($agencia, $conta, $saldo, $senha)
-   //  {
-   //      $this->agencia = $agencia;
-   //      $this->conta = $conta;
-   //      $this->saldo = $saldo;
-   //      $this->senha = $senha;
-   //  }
+   public function depositar($num_conta, $conn, $valor)
+   {
+      try {
+         //saber o saldo
+         $saldo = $this->getsaldo($num_conta, $conn);
+         //somar com o deposito
+         $saldo += $valor;
+         //atualizar saldo
+         $result = $this->setSaldo($num_conta, $conn, $saldo);
+         return $result ? "Deposito realizado com sucesso" : "Depósito não realizado";
+      } catch (Exception $e) {
+         die("Conexão falhou: " . $e->getMessage());
+      }
+   }
 
    public function getAgencia()
    {
@@ -50,9 +57,11 @@ class Conta
       $linha = $conn->selecionar($sql);
       return $linha['saldo'];
    }
-   public function setSaldo($saldo)
+   public function setSaldo($num_conta, $conn, $saldo)
    {
-      $this->saldo = $saldo;
+      $sql = "UPDATE contas SET saldo = $saldo WHERE conta = $num_conta";
+      $result = $conn->dml($sql);
+      return $result;
    }
 
    public function getSenha()

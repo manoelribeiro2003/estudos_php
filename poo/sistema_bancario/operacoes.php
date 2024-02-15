@@ -3,6 +3,7 @@
 include('./conta.php');
 include('./conexao_2.php');
 $num_conta = $_POST['num_conta'];
+$valor = $_POST['valor'];
 $conn = new Conexao();
 $conta = new Conta();
 $linha = $conta->selecionarConta($num_conta, $conn);
@@ -26,7 +27,8 @@ switch ($_POST['operacao']) {
         break;
 
     case 'Deposito':
-        echo "Depósito";
+        $result = $conta->depositar($num_conta, $conn, $valor);
+        echo "Result =  ".$result;
         break;
 
     default:

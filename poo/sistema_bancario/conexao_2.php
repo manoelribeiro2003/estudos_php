@@ -28,4 +28,22 @@ class Conexao
             mysqli_close($conexao);
         }
     }
+
+    public function dml($sql){
+        try {
+            $conexao = $this->criarConexao();
+            mysqli_query($conexao, $sql);
+            if (mysqli_affected_rows($conexao)) {
+                return TRUE;
+            }else{
+                return FALSE;
+            }
+        } catch (Exception $e) {
+            die("A conexão falhou: ".$e->getMessage());
+            return FALSE;
+        }finally{
+            mysqli_close($conexao);//fechar a conexão
+        }
+    }
+
 }
