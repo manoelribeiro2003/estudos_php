@@ -1,0 +1,416 @@
+* {
+    /*reset*/
+    margin: 0;
+    /*remove espaços de margem*/
+    padding: 0;
+    /*remove preenchimentos*/
+    font-size: 100%;
+    /*mantem o tamnho da fonte padrao*/
+    box-sizing: border-box;
+    /*o tamanho especificado para largura e altura inclui também os valores de margem e padding*/
+    font-family: 'Open Sans', sans-serif;
+    /*font family open sans ou sans-serif*/
+}
+
+nav,
+ul {
+    list-style: none;
+    /*remove efeitos de lista*/
+}
+
+a {
+    text-decoration: none;
+    /*sem decoracao para links*/
+    cursor: pointer;
+    /*quando o cursor passar por cima será um pointer (maozinha)*/
+    opacity: 0.9;
+    /*define opacidade em 0.9*/
+}
+
+a:hover {
+    opacity: 1;
+    /*quando passar o mouse por cima a opacidade fica em 100%*/
+}
+
+/*header*/
+header {
+    background-color: #f8ff91;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    /*define que os itens tenham espaços entre eles*/
+    align-items: center;
+    /*alinha os itens individualente ao centro*/
+    padding: 20px;
+}
+
+header img {
+    width: 200px;
+    /*da a imagem dentro do header width de 200px*/
+}
+
+header nav {
+    display: flex;
+    /*transforma a nav dentro do header em um flexbox*/
+}
+
+header li a {
+    color: #191c03;
+}
+
+header li {
+    margin: 15px;
+}
+
+header li:first-child {
+    margin-left: 0;
+}
+
+header li:last-child {
+    margin-right: 0;
+}
+
+@media(max-width: 700px) {
+    header {
+        flex-direction: column;
+        /*faz com que os itens dentro do header sejam posicionados em coluna*/
+    }
+
+    header img {
+        margin-bottom: 15px;
+    }
+}
+
+/*hero*/
+.hero {
+
+
+    /*----------------------------------------------------------------------------------*/
+    /*---------DIFERENÇA ENTRE align-content x align-items x justify-content-------------*/
+    /*
+    A propriedade align-items alinha os itens dentro de um container flex ao longo do cross axis (perpendicular).
+    A propriedade funciona como o align-items so que para o main axis.
+    justify-content alinha os itens dentro de um container flex ao longo do main axis.
+    
+    
+    A propriedade align-content alinha as linhas de um container quando há espaço extra no cross axis e a 
+    propriedade flex-wrap: wrap; está ativada.
+    Se estiver no valor padrao (nowrap), essa propriedade nao é tao relevante, entao justify-content e align-items
+    sao mais relevantes nesses casos.
+    
+    
+    
+    */
+    /*----------------------------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    background-image: url(../img/imagem1.jpg);
+    background-size: cover;
+    /*faz com que a imagem de fundo seja dimensionada de forma que cubra toda a area disponivel
+    do elemento que a contem (no caso é a section de classe hero) mantendo a proporcao original*/
+    min-height: 100vh;
+    /*tamanho minimo dessa section é 100 unidades da view-port*/
+    color: #fff;
+    display: flex;
+
+    justify-content: center;
+    /*alinha o conteudo como um todo eixo-Y no centro*/
+    /*justify-items é de grids*/
+
+    /*align-items e align-content sao de flexbox mas a diferenãa é que align-content precisa que flex-wrap: wrap;
+    seja ativada pois essa propriedade define como os espaço entre as linhas é definido e controla o alinhamento
+    das linhas do conteiner flexivel.
+    Ja align-items alinha os itens individuais e controla como eles sao alinhados ao longo do eixo transversal */
+
+    align-items: center;
+    /*alinha os itens individuais dentro do conteiner flexivel e controla como eles
+    sao alinhados ao longo do eixo transversal do conteiner. Ele determina o alinhamento vertical dos items*/
+
+    /*align-content precisa que flex-wrap: wrap; seja ativada, pois ela controla o alinhamento das linhas
+    no eixo transversal e ela especifica como o espaço entre as linhas é distribuido*/
+
+    flex-direction: column;
+    /*define que a distribuicao dos itens dentro do conteiner é em formato de coluna*/
+    text-align: center;
+    /*alinha o texto ao centro*/
+}
+
+.hero h1 {
+    font-size: 3.2rem;
+}
+
+.hero h3 {
+    font-size: 2rem;
+    margin-bottom: 2px;
+}
+
+.hero .btn {
+    background-color: #ffff;
+    border-radius: 4px;
+    color: #191c03;
+    padding: 20px 50px;
+    text-transform: uppercase;
+    /*transforma o texto em caixa alta*/
+}
+
+@media(max-width: 700px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero h3 {
+        font-size: 1.5rem;
+    }
+}
+
+/*conheça o hotel*/
+.conheca-o-hotel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 100px 50px;
+}
+
+.conheca-o-hotel h3 {
+    font-size: 2rem;
+    margin-bottom: 35px;
+    color: #191c03;
+    text-align: center;
+}
+
+.conheca-o-hotel p {
+    max-width: 800px;
+    margin-bottom: 35px;
+    color: #191c03;
+    text-align: center;
+}
+
+.conheca-o-hotel hr {
+    width: 200px;
+    height: 2px;
+    background-color: #191c03;
+    margin-bottom: 70px;
+    border: none;
+}
+
+
+.conheca-o-hotel .grid {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.conheca-o-hotel .grid li {
+    height: 350px;
+    padding: 20px;
+    border-radius: 40px;
+
+    background-clip: content-box;
+    /*background-clip define até onde o plano de fundo se estende. No caso, content-box indica que
+    o plano de fundo é cortado na borda do conteudo do elemento, ou seja a imagem se estende até a
+    borda do elemento que a contem como background*/
+
+    background-size: cover;
+    /*dimensiona a imagem de modo que ela cubra proporcionalmente toda a 
+    area do elemento pai*/
+
+    background-position: center;
+    /*mantem a imagem no centro do elemento pai
+    para caso ela seja redimensionada, nao saia de contexto ao sair do centro*/
+}
+
+.conheca-o-hotel .grid li.small {
+    flex-basis: 40%;
+}
+
+.conheca-o-hotel .grid li.large {
+    flex-basis: 60%;
+    /*define  o tamanho inicial de um item flexivel antes que o espaco adicional
+    seja distribuido ou consumido pelos itens flexiveis*/
+}
+
+@media(max-width: 700px) {
+
+    .conheca-o-hotel .grid li.small,
+    .conheca-o-hotel .grid li.large {
+        flex-basis: 100%;
+    }
+}
+
+/*caracteristicas*/
+.caracteristicas {
+    background-color: #191c03;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 100px 50px;
+}
+
+.caracteristicas h3 {
+    font-size: 2rem;
+    margin-bottom: 35px;
+    color: #ffff;
+    text-align: center;
+}
+
+.caracteristicas p {
+    max-width: 800px;
+    margin-bottom: 35px;
+    color: #ffff;
+    text-align: center;
+}
+
+.caracteristicas hr {
+    width: 200px;
+    height: 2px;
+    background-color: #ffff;
+    margin-bottom: 70px;
+    border: none;
+}
+
+
+.caracteristicas .grid {
+    width: 100%;
+    display: flex;
+}
+
+.caracteristicas .grid li {
+    padding: 0, 30px;
+    text-align: center;
+}
+
+.caracteristicas .grid li i {
+    color: #c3c63b;
+    font-size: 50px;
+    margin-bottom: 30px;
+}
+
+.caracteristicas .grid li h4 {
+    color: #c3c63b;
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+
+.caracteristicas .grid li p {
+    color: #ffff;
+}
+
+@media(max-width: 850px) {
+    .caracteristicas .grid {
+        flex-direction: column;
+    }
+}
+
+/*newsletter*/
+.newsletter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 100px, 50px;
+    margin: 100px;
+}
+
+.newsletter h3 {
+    font-size: 2rem;
+    margin-bottom: 35px;
+    color: #c3c63b;
+    text-align: center;
+}
+
+.newsletter p {
+    max-width: 800px;
+    margin-bottom: 35px;
+    color: #c3c63b;
+    text-align: center;
+}
+
+.newsletter hr {
+    width: 200px;
+    height: 2px;
+    background-color: #c3c63b;
+    margin-bottom: 70px;
+    border: none;
+}
+
+.newsletter form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    /*permite quebra de linha dos itens flexiveis*/
+    width: 80%;
+    max-width: 800px;
+}
+
+.newsletter input {
+    padding: 15px;
+    border: 1px solid #c3c63b;
+    border-radius: 4px;
+    margin-right: 15px;
+    flex: 1;
+}
+
+.newsletter button {
+    padding: 15px;
+    background-color: #c3c63b;
+    color: #ffff;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+@media(max-width: 700px) {
+    .newsletter input {
+        flex-basis: 100%;
+        margin-bottom: 15px;
+    }
+}
+
+/*footer*/
+footer {
+    display: flex;
+    flex-direction: column;
+    background-color: #191c03;
+    padding: 50px;
+    align-items: center;
+}
+
+footer ul {
+    display: flex;
+    margin-bottom: 25px;
+}
+
+footer ul li {
+    margin-right: 10px;
+}
+
+footer ul li:last-child {
+    margin-right: 0;
+}
+
+footer ul li a {
+    color: #c3c63b;
+    font-size: 2rem;
+}
+
+footer p {
+    color: #c3c63b;
+    text-align: center;
+}

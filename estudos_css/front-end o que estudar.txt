@@ -1,0 +1,8 @@
+O que estudar para conseguir o primeiro emprego como dev front-end
+
+1º dica: nao procurar aprender de uma unica vez. aprenda uma coisa de cada vez. 
+foque numa determinada tecnologia. avance nessa tecnologia antes de partir pra proxima.
+
+-> html, css, javascript é a base de tudo
+
+pre-processador de css
