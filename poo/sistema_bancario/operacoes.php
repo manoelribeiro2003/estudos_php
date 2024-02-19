@@ -23,7 +23,8 @@ switch ($_POST['operacao']) {
         break;
 
     case 'Saque':
-        echo "Saque";
+        $result = $conta->sacar($num_conta, $conn, $valor);
+        echo "Result =  ".$result;
         break;
 
     case 'Deposito':
