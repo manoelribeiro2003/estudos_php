@@ -2,10 +2,21 @@
 
 class Conta
 {
-   private $agencia = "";
-   private $conta = "";
-   private $saldo = 0;
-   private $senha = "";
+   function login($agencia, $num_conta, $senha, $conn)
+   {
+      try {
+         $sql = "SELECT agencia, conta, senha FROM contas WHERE conta = $num_conta";
+         $linha = $conn->selecionar($sql);
+         if ($linha['agencia'] == $agencia and $linha['conta'] == $num_conta and $linha['senha'] == md5($senha)) {
+            return 'Acesso permitido';
+         } else {
+            return 'Acesso negado. Credenciais Inválidas';
+         }
+      } catch (Exception $e) {
+         die("A conexão falhou: " . $e);
+         return 'Acesso negado';
+      }
+   }
 
    public function selecionarConta($num_conta, $conn): array
    {
@@ -21,11 +32,11 @@ class Conta
    function criarConta($agencia, $num_conta, $saldo, $senha, $conn)
    {
       try {
-         $sql = "INSERT INTO contas (agencia, conta, saldo, senha) VALUES ('$agencia', '$num_conta', '$saldo', '$senha')";
+         $sql = "INSERT INTO contas (agencia, conta, saldo, senha) VALUES ('$agencia', '$num_conta', '$saldo', '" . md5($senha) . "')";
          $result = $conn->dml($sql);
          return $result ? "Conta criada com sucesso" : "Falha ao criar conta";
       } catch (Exception $e) {
-         die ("Erro ao criar a conta: " . $e->getMessage());
+         die("Erro ao criar a conta: " . $e->getMessage());
          return "Falha ao criar conta";
       }
    }
@@ -35,7 +46,7 @@ class Conta
       try {
 
          //saber o saldo
-         $saldo = $this->getsaldo($num_conta, $conn);
+         $saldo = $this->getSaldo($num_conta, $conn);
          //somar com o deposito
          $saldo += $valor;
          //atualizar saldo
@@ -69,23 +80,27 @@ class Conta
       }
    }
 
-   public function getAgencia()
+   public function getAgencia($num_conta, $conn)
    {
-      return $this->agencia;
-   }
-   public function setAgencia($agencia)
-   {
-      $this->agencia = $agencia;
+      $sql = "SELECT agencia FROM contas WHERE conta = $num_conta";
+      $linha = $conn->selecionar($sql);
+      return $linha['agencia'];
    }
 
-   public function getConta()
-   {
-      return $this->conta;
-   }
-   public function setConta($conta)
-   {
-      $this->conta = $conta;
-   }
+   // public function setAgencia($agencia)
+   // {
+   //    $this->agencia = $agencia;
+   // }
+
+   // public function getConta()
+   // {
+   //    return $this->conta;
+   // }
+
+   // public function setConta($conta)
+   // {
+   //    $this->conta = $conta;
+   // }
 
    public function getSaldo($num_conta, $conn)
    {
@@ -100,12 +115,15 @@ class Conta
       return $result;
    }
 
-   public function getSenha()
+   public function getSenha($num_conta, $conn)
    {
-      return $this->senha;
+      $sql = "SELECT senha FROM contas WHERE conta = $num_conta;";
+      $linha = $conn->selecionar($sql);
+      return $linha['senha'];
    }
-   public function setSenha($senha)
-   {
-      $this->senha = $senha;
-   }
+
+   // public function setSenha($senha)
+   // {
+   //    $this->senha = $senha;
+   // }
 }
